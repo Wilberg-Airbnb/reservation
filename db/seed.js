@@ -33,4 +33,5 @@ readPromise(__dirname + '/dummyData.txt', 'utf-8')
 	})
 	.catch(err => {
 		console.error('read promise chain failed', err);
+		
 	})
