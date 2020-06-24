@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      listingId: null,
+      listingId: JSON.parse(window.location.href.split('/')[3]),
       availableDates: [],
       standardPrice: null,
       cleaningFee: null,
@@ -17,7 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    var listingId = window.location.href.split('/')[3]
+
+    var listingId = this.state.listingId
     axios.get(`/reservation/${listingId}`)
       .then(res => {
         console.log(res.data)
@@ -30,6 +31,9 @@ class App extends React.Component {
           weeklyDiscount: res.data.weeklyDiscount,
           refundable: res.data.refundable
         })
+      })
+      .catch(err => {
+        console.log("GET for data failed: ", err);
       })
   }
 
