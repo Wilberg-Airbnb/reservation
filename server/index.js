@@ -9,10 +9,11 @@ const promiseQuery = Promise.promisify(db.query).bind(db);
 app.use(express.static(__dirname + '../../public'));
 app.use(express.json());
 
-app.get('/reservation/:listingId', (req, res) => {
-  var listingId = req.path.split('/')[2];
-  var query = `SELECT * FROM reservation INNER JOIN dates ON reservation.id = dates.reservation_id WHERE listingId = ${listingId}`
+app.get('/api/reservation/:listingId', (req, res) => {
 
+  console.log("🥳 request data for listingId: ", req.params.listingId)
+  var listingId = req.params.listingId;
+  var query = `SELECT * FROM reservation INNER JOIN dates ON reservation.id = dates.reservation_id WHERE listingId = ${listingId}`
 
   promiseQuery(query)
     .then(data => {
@@ -25,6 +26,7 @@ app.get('/reservation/:listingId', (req, res) => {
     })
     .catch(err => {
       console.log('📅 promise query failed to get item data', err);
+      res.sendStatus(500);
     })
 })
 
