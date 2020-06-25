@@ -9,7 +9,7 @@ CREATE TABLE reservation (
   listingId int NOT NULL,
   standardPrice integer NOT NULL,
   cleaningFee integer NOT NULL,
-  weeklyDiscount integer NOT NULL,
+  weeklyDiscount decimal(3, 2) NOT NULL,
   refundable boolean NOT NULL,
   PRIMARY KEY (id)
 );

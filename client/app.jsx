@@ -23,7 +23,7 @@ class App extends React.Component {
     var listingId = this.state.listingId
     axios.get(`/api/reservation/${listingId}`)
       .then(res => {
-        console.log(res.data)
+        console.log(res.data.weeklyDiscount)
 
         this.setState({
           listingId: res.data.listingId,
@@ -31,7 +31,7 @@ class App extends React.Component {
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
-          refundable: res.data.refundable
+          refundable: !!res.data.refundable
         }) 
       })
       .catch(err => {

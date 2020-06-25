@@ -7,39 +7,55 @@ import axios from "axios";
 configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
-    it('sets listingId state based on url and calls componentDidMount', () => {
+
+  let wrapper
+
+    beforeEach(() => {
 
       global.window = Object.create(window);
-      const url = "http://localhost:8888/27";
-      Object.defineProperty(window, 'location', {
-        value: {
-          href: url
-        }
-      })
-
-      const spy = jest.spyOn(App.prototype, 'componentDidMount');
-      const wrapper = shallow(<App />);
-      expect(wrapper.state().listingId).toEqual(27);
-      expect(spy).toHaveBeenCalled();
-      spy.mockReset();
-      spy.mockRestore();
+    const url = "http://localhost:8888/27";
+    Object.defineProperty(window, 'location', {
+      value: {
+        href: url
+      }
     })
-  });
+
+      wrapper = shallow(<App/>)
+    })
+
+
+  it('sets listingId state based on url and calls componentDidMount', () => {
+
+    console.log(wrapper)
+    // const spy = jest.spyOn(App.prototype, 'componentDidMount');
+    // const wrapper = shallow(<App />);
+    // expect(wrapper.state().listingId).toEqual(27);
+    // expect(spy).toHaveBeenCalled();
+    // spy.mockReset();
+    // spy.mockRestore();
+  })
+
+  it('should do something', () => {
+    console.log(wrapper)
+  })
+
+  it('does nothing', () => {});
+});
 
 
   // describe('API', () => {
 
-  //   it('should return data packet according to listingId when mounted', async () => {
+  //   it('should return data packet according to listingId when mounted', () => {
   
-  //     global.window = Object.create(window);
-  //     const url = "http://localhost:8888/57";
-  //     Object.defineProperty(window, 'location', {
-  //       value: {
-  //         href: url
-  //       }
-  //     })
+  //     // global.window = Object.create(window);
+  //     // const url = "http://localhost:8888/57";
+  //     // Object.defineProperty(window, 'location', {
+  //     //   value: {
+  //     //     href: url
+  //     //   }
+  //     // })
   
-  //     const wrapper = await shallow(<App/>)
+  //     const wrapper = shallow(<App/>)
   //     // console.log(wrapper.state())
   
   //   })

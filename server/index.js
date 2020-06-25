@@ -17,6 +17,7 @@ app.get('/api/reservation/:listingId', (req, res) => {
 
   promiseQuery(query)
     .then(data => {
+      console.log(data)
       let availableDates = data.map(el => {
         return {date: el.availableDate, fee: el.fee}
       });
