@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "babel-jest": "^26.1.0",
+    "babel-polyfill": "^6.26.0",
     "supertest": "^4.0.2",
     "webpack-cli": "^3.3.12"
   },
