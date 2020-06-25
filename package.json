@@ -19,7 +19,7 @@
     "faker": "^4.1.0",
     "jest": "^26.1.0",
     "lodash": "^4.17.15",
-    "mysql": "^2.13.0",
+    "mysql": "^2.18.1",
     "path": "^0.12.7",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
@@ -39,9 +39,18 @@
     "server:dev": "nodemon server/index.js"
   },
   "jest": {
-    "modulePaths": ["/shared/vendor/modules"],
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"

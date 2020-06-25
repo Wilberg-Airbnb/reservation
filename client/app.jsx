@@ -6,8 +6,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.requestedId = JSON.parse(window.location.href.split('/')[3]);
+
     this.state = {
-      listingId: JSON.parse(window.location.href.split('/')[3]),
+      listingId: this.requestedId,
       availableDates: [],
       standardPrice: null,
       cleaningFee: null,
@@ -19,7 +21,7 @@ class App extends React.Component {
   componentDidMount() {
 
     var listingId = this.state.listingId
-    axios.get(`/reservation/${listingId}`)
+    axios.get(`/api/reservation/${listingId}`)
       .then(res => {
         console.log(res.data)
 
