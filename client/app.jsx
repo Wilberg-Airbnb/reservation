@@ -31,7 +31,7 @@ class App extends React.Component {
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
-          refundable: !!res.data.refundable
+          refundable: res.data.refundable
         }) 
       })
       .catch(err => {

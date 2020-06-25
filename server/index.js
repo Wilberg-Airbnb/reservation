@@ -23,6 +23,7 @@ app.get('/api/reservation/:listingId', (req, res) => {
       });
       let reservation = data[0];
       reservation.availableDates = availableDates;
+      reservation.refundable = !!reservation.refundable;
       res.json(reservation);
     })
     .catch(err => {
