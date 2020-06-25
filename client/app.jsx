@@ -29,10 +29,10 @@ class App extends React.Component {
           listingId: res.data.listingId,
           availableDates: res.data.availableDates,
           standardPrice: res.data.standardPrice,
-          cleaningFfee: res.data.cleaningFee,
+          cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
           refundable: res.data.refundable
-        })
+        }) 
       })
       .catch(err => {
         console.log("GET for data failed: ", err);

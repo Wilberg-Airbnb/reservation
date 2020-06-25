@@ -7,6 +7,7 @@ import axios from "axios";
 configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
+
     it('sets listingId state based on url and calls componentDidMount', () => {
 
       global.window = Object.create(window);
