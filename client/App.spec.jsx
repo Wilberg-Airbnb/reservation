@@ -7,40 +7,65 @@ import axios from "axios";
 configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
-
-  let wrapper
-
-    beforeEach(() => {
+    it('sets listingId state based on url and calls componentDidMount', () => {
 
       global.window = Object.create(window);
-    const url = "http://localhost:8888/27";
-    Object.defineProperty(window, 'location', {
-      value: {
-        href: url
-      }
+      const url = "http://localhost:8888/27";
+      Object.defineProperty(window, 'location', {
+        value: {
+          href: url
+        }
+      })
+
+      const spy = jest.spyOn(App.prototype, 'componentDidMount');
+      const wrapper = mount(<App />);
+      expect(wrapper.state().listingId).toEqual(27);
+      expect(spy).toHaveBeenCalled();
+      spy.mockReset();
+      spy.mockRestore();
     })
-
-      wrapper = shallow(<App/>)
-    })
+  });
 
 
-  it('sets listingId state based on url and calls componentDidMount', () => {
+//TODO: write integration tests for api/reservation/:listingId route
+//FIXME: async issue with JEST/Enzyme tests
 
-    console.log(wrapper)
-    // const spy = jest.spyOn(App.prototype, 'componentDidMount');
-    // const wrapper = shallow(<App />);
-    // expect(wrapper.state().listingId).toEqual(27);
-    // expect(spy).toHaveBeenCalled();
-    // spy.mockReset();
-    // spy.mockRestore();
-  })
 
-  it('should do something', () => {
-    console.log(wrapper)
-  })
+// describe('<App />', () => {
 
-  it('does nothing', () => {});
-});
+//   let wrapper
+
+//     beforeEach(() => {
+
+//       global.window = Object.create(window);
+//     const url = "http://localhost:8888/27";
+//     Object.defineProperty(window, 'location', {
+//       value: {
+//         href: url
+//       }
+//     })
+
+//       wrapper = shallow(<App/>)
+//     })
+
+
+//   it('sets listingId state based on url and calls componentDidMount', () => {
+
+//     console.log(wrapper)
+//     // const spy = jest.spyOn(App.prototype, 'componentDidMount');
+//     // const wrapper = shallow(<App />);
+//     // expect(wrapper.state().listingId).toEqual(27);
+//     // expect(spy).toHaveBeenCalled();
+//     // spy.mockReset();
+//     // spy.mockRestore();
+//   })
+
+//   it('should do something', () => {
+//     console.log(wrapper)
+//   })
+
+//   it('does nothing', () => {});
+// });
 
 
   // describe('API', () => {
