@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Widget from './components/Widget.jsx'
 import axios from 'axios';
 
 class App extends React.Component {
@@ -25,7 +26,7 @@ class App extends React.Component {
     console.log('axios called for listingId: ', listingId)
     axios.get(`http://localhost:8888/api/reservation/${listingId}`)
       .then(res => {
-        console.log('AXIOS SUCCESS')
+        // console.log('AXIOS SUCCESS')
 
         this.setState({
           listingId: res.data.listingId,
@@ -39,12 +40,14 @@ class App extends React.Component {
       .catch(err => {
         console.log("GET for data failed: ", err);
       })
+
+      
   }
 
   render() {
     return (
       <div>
-        <h1>RESERVATIONS</h1>
+        <Widget/>
       </div>
     );
   }
