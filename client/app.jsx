@@ -23,7 +23,7 @@ class App extends React.Component {
 
     var listingId = this.state.listingId
 
-    console.log('axios called for listingId: ', listingId)
+    // console.log('axios called for listingId: ', listingId)
     axios.get(`http://localhost:8888/api/reservation/${listingId}`)
       .then(res => {
         // console.log('AXIOS SUCCESS')
@@ -47,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Widget/>
+        <Widget listingData={this.state}/>
       </div>
     );
   }
