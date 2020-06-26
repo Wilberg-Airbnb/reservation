@@ -17,13 +17,14 @@ app.get('/api/reservation/:listingId', (req, res) => {
 
   promiseQuery(query)
     .then(data => {
-      console.log(data)
+      console.log('data coming back!')
       let availableDates = data.map(el => {
         return {date: el.availableDate, fee: el.fee}
       });
       let reservation = data[0];
       reservation.availableDates = availableDates;
       reservation.refundable = !!reservation.refundable;
+      // console.log(reservation);
       res.json(reservation);
     })
     .catch(err => {
@@ -40,3 +41,5 @@ app.get('/:listingId', (req, res) => {
 app.listen(8888, () => {
     console.log('server listening on port 8888!')
 })
+
+
