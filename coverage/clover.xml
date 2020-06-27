@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593238361918" clover="3.2.0">
-  <project timestamp="1593238361918" name="All files">
+<coverage generated="1593245208567" clover="3.2.0">
+  <project timestamp="1593245208567" name="All files">
     <metrics statements="51" coveredstatements="48" conditionals="8" coveredconditionals="7" methods="16" coveredmethods="14" elements="75" coveredelements="69" complexity="0" loc="51" ncloc="51" packages="4" files="4" classes="4"/>
     <package name="client">
       <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
@@ -30,13 +30,13 @@
       <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="index.js" path="/Users/samjohnson/Documents/hrfiles/airbrb/reservation/db/index.js">
         <metrics statements="7" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
       </file>
     </package>
     <package name="server">

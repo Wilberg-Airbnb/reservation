@@ -1,7 +1,6 @@
 const supertest = require('supertest');
 const { app } = require('./index.js');
 const request = supertest(app);
-const { db } = require('../db/index.js')
 
 describe('/:listingId', () => {
 
