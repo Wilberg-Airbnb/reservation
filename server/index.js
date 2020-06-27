@@ -3,6 +3,7 @@ const app = express();
 const db = require('../db/index.js');
 const path = require('path');
 const Promise = require('bluebird');
+const { readdirSync } = require('fs');
 
 const promiseQuery = Promise.promisify(db.query).bind(db);
 
@@ -34,12 +35,13 @@ app.get('/api/reservation/:listingId', (req, res) => {
 })
 
 app.get('/:listingId', (req, res) => {
+  console.log('current page index: ', req.params.listingId)
+  if (req.params.listingId > 99) {
+    res.sendStatus(404);
+  }
   var itemPage = path.join(__dirname, '../public/index.html');
+
   res.sendFile(itemPage);
 })
 
-app.listen(8888, () => {
-    console.log('server listening on port 8888!')
-})
-
-
+module.exports.app = app;
