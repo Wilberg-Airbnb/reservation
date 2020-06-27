@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
 
+  if (req.params.listingId > 99 || req.params.listingId < 0) {
+    res.sendStatus(404);
+  }
+
   console.log("🥳 request data for listingId: ", req.params.listingId)
   var listingId = req.params.listingId;
   var query = `SELECT * FROM reservation INNER JOIN dates ON reservation.id = dates.reservation_id WHERE listingId = ${listingId}`
