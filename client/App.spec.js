@@ -13,7 +13,8 @@ describe('<App />', () => {
     const url = "http://localhost:8888/27";
     Object.defineProperty(window, 'location', {
       value: {
-        href: url
+        href: url,
+        pathname: '/27'
       }
     })
 
@@ -23,7 +24,7 @@ describe('<App />', () => {
 
   it('should pass listingId & listingData to Widget', () => {
     const wrapper = shallow(<App/>);
-    // console.log(wrapper.find(Widget).state())
+
     expect(wrapper.find(Widget).exists()).toBeTruthy();
   })
 

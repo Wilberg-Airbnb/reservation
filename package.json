@@ -26,6 +26,7 @@
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "sinon": "^9.0.2",
+    "styled-components": "^5.1.1",
     "webpack": "^4.43.0",
     "xcode": "^3.0.1"
   },
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "test": "jest -c jest.config.js --coverage",
-    "test:watch": "jest -c jest.config.js --coverage --watch",
+    "test:watch": "jest -c jest.config.js --coverage --watch --silent",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
     "server:dev": "nodemon server/server.js"
