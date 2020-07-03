@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593742985335" clover="3.2.0">
-  <project timestamp="1593742985335" name="All files">
-    <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8" elements="23" coveredelements="19" complexity="0" loc="13" ncloc="13" packages="2" files="2" classes="2"/>
+<coverage generated="1593798342331" clover="3.2.0">
+  <project timestamp="1593798342331" name="All files">
+    <metrics statements="14" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8" elements="24" coveredelements="19" complexity="0" loc="14" ncloc="14" packages="2" files="2" classes="2"/>
     <package name="client">
-      <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+      <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
       <file name="App.jsx" path="/Users/samjohnson/Documents/hrfiles/airbrb/reservation/client/App.jsx">
-        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
         <line num="8" count="3" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="51" count="3" type="stmt"/>

@@ -27,9 +27,9 @@ class App extends React.Component {
     var listingId = this.state.listingId
 
     // console.log('axios called for listingId: ', listingId)
-    axios.get(`http://localhost:8888/api/reservation/${listingId}`)
+    axios.get(`/api/reservation/${listingId}`)
       .then(res => {
-        // console.log('AXIOS SUCCESS')
+        console.log('AXIOS SUCCESS:', res)
 
         this.setState({
           listingId: res.data.listingId,

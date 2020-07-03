@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '../../public'));
 app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
+  console.log('this is running *************')
 
   if (req.params.listingId > 99 || req.params.listingId < 0) {
     res.sendStatus(404);
