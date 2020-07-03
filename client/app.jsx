@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.requestedId = JSON.parse(window.location.href.split('/')[3]);
+    // this.requestedId = JSON.parse(window.location.href.split('/')[3]); 
+    this.requestedId = JSON.parse(window.location.pathname.slice(1));
 
     this.state = {
       listingId: this.requestedId,
@@ -20,6 +21,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
+    console.log(this.state.listingId)
 
     var listingId = this.state.listingId
 
@@ -35,19 +38,19 @@ class App extends React.Component {
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
           refundable: res.data.refundable
-        }) 
+        })
       })
       .catch(err => {
         console.log("GET for data failed: ", err);
       })
 
-      
+
   }
 
   render() {
     return (
       <div>
-        <Widget listingData={this.state}/>
+        <Widget listingData={this.state} />
       </div>
     );
   }
