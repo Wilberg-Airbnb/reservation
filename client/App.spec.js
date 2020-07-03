@@ -39,3 +39,4 @@ describe('<App />', () => {
     spy.mockRestore();
   })
 });
+

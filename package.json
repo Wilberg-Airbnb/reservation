@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": "jest -c jest.config.js --coverage",
-    "test:watch": "jest -c jest.config.js --coverage --watch --silent",
+    "test:watch": "jest -c jest.config.js --coverage --watch --silent --runInBand --detectOpenHandles",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
     "server:dev": "nodemon server/server.js"
