@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
 
     // this.requestedId = JSON.parse(window.location.href.split('/')[3]); 
-    this.requestedId = JSON.parse(window.location.pathname.slice(1));
+    this.requestedId = JSON.parse(window.location.pathname.slice(1, -1));
 
     this.state = {
       listingId: this.requestedId,
