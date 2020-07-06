@@ -7,15 +7,18 @@ const { readdirSync } = require('fs');
 
 const promiseQuery = Promise.promisify(db.query).bind(db);
 
-app.use('/:listingId/', express.static(__dirname + '../../public'));
-app.use((req, res, next) => {
-  console.log(req)
+app.use('/:listingId/', (req, res, next) => {
+  console.log('', req.params.listingId)
+  if (req.params.listingId > 99 || req.params.listingId < 0) { 
+    res.sendStatus(404);
+  }
   next()
 })
+app.use('/:listingId/', express.static(__dirname + '../../public'));
 app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
-  var listingId = req.params.listingId;
+  var listingId = req.params.listingId; 
   
   if (listingId > 99 || listingId < 0) { 
     res.sendStatus(404);
