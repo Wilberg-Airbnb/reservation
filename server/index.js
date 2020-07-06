@@ -11,13 +11,13 @@ app.use('/:listingId', express.static(__dirname + '../../public'));
 app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
-
-  if (req.params.listingId > 99 || req.params.listingId < 0) {
+  var listingId = JSON.parse(req.params.listingId);
+  
+  if (listingId > 99 || listingId < 0) { 
     res.sendStatus(404);
   }
 
   console.log("🥳 request data for listingId: ", req.params.listingId)
-  var listingId = req.params.listingId;
   var query = `SELECT * FROM reservation INNER JOIN dates ON reservation.id = dates.reservation_id WHERE listingId = ${listingId}`
 
   promiseQuery(query)
@@ -38,14 +38,14 @@ app.get('/api/reservation/:listingId', (req, res) => {
     })
 })
 
-// app.get('/:listingId', (req, res) => {
-//   console.log('current page index: ', req.params.listingId)
-//   if (req.params.listingId > 99) {
-//     res.sendStatus(404);
-//   }
-//   var itemPage = path.join(__dirname, '../public/index.html');
+app.get('/:listingId', (req, res) => {
+  console.log('current page index: ', req.params.listingId)
+  if (req.params.listingId > 99) {
+    res.sendStatus(404);
+  }
+  // var itemPage = path.join(__dirname, '../public/index.html');
 
-//   res.sendFile(itemPage);
-// })
+  // res.sendFile(itemPage); 
+})
 
-module.exports.app = app;
+module.exports.app = app; 

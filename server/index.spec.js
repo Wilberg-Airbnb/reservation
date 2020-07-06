@@ -6,7 +6,7 @@ describe('/:listingId', () => {
 
   it('should serve static files at listingIds 0-99', async (done) => {
 
-    const res = await request.get('/32')
+    const res = await request.get('/32/')
 
     expect(res.status).toBe(200)
     expect(res.text).toContain('html')
@@ -15,7 +15,7 @@ describe('/:listingId', () => {
 
   it('should return a 404 error for any pages not at listingId 0-99', async (done) => {
 
-    const res = await request.get('/100');
+    const res = await request.get('/100/');
     expect(res.status).toBe(404);
 
     done()
@@ -26,7 +26,7 @@ describe('/:listingId', () => {
 describe('/api/reservation/:listingId', () => {
 
   it('should respond with a JSON object and status of 200 if given a listingId', async (done) => {
-    const res = await request.get('/api/reservation/45');
+    const res = await request.get('/api/reservation/45/');
 
     expect(res.body).toBeDefined();
     expect(typeof res.body).toBe('object');
