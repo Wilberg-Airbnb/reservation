@@ -45,16 +45,4 @@ app.get('/api/reservation/:listingId', (req, res) => {
     })
 })
 
-// app.get('/:listingId/', (req, res) => {
-//   console.log('******************************')
-//   // console.log('current page index: ', req.params.listingId)
-//   if (JSON.parse(req.params.listingId) > 99) {
-//     res.sendStatus(404);
-//   }
-//   // var itemPage = path.join(__dirname, '../public/index.html');
-
-//   // res.sendFile(itemPage); 
-//   res.sendStatus(200)
-// })
-
 module.exports.app = app; 

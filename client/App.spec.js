@@ -3,6 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount, shallow, configure } from "enzyme";
 import App from "./App.jsx";
 import Widget from "./components/Widget.jsx"
+import axios from "axios";
 
 Enzyme.configure({ adapter: new Adapter(), disableLifecycleMethods: true });
 
@@ -28,15 +29,36 @@ describe('<App />', () => {
     expect(wrapper.find(Widget).exists()).toBeTruthy();
   })
 
-  it('should call componentDidMount ', async () => {
+  it('should call getData w/ axios request on mount', async (done) => {
+    const spy = jest.spyOn(App.prototype, 'getData');
+    const wrapper = mount(<App/>);
+    const instance = wrapper.instance();
+
+    expect(wrapper.instance().getData).toBeTruthy();
+    expect(spy).toHaveBeenCalled();
+    done()
+  })
+
+  it('should call axios request on mount', async (done) => {
+    const spy = jest.spyOn(axios, 'get');
+    const wrapper = mount(<App/>);
+    const instance = wrapper.instance();
+
+    expect(wrapper.instance().getData).toBeTruthy();
+    expect(spy).toHaveBeenCalled();
+    done()
+  })
+
+  it('should call componentDidMount ', async (done) => {
 
     const spy = jest.spyOn(App.prototype, 'componentDidMount');
     var wrapper = await shallow(<App />);
-    const instance = wrapper.instance();
-    await instance.componentDidMount();
+    const instance = await wrapper.instance();
+    instance.componentDidMount();
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     spy.mockRestore();
+    done()
   })
 });
 

@@ -20,13 +20,10 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-    console.log(this.state.listingId)
-
+  getData() {
+    
     var listingId = this.state.listingId
 
-    // console.log('axios called for listingId: ', listingId)
     axios.get(`/api/reservation/${listingId}`)
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
@@ -42,7 +39,10 @@ class App extends React.Component {
       .catch(err => {
         console.log("GET for data failed: ", err);
       })
+  }
 
+  componentDidMount() {
+    this.getData();
 
   }
 
