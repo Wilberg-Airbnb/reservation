@@ -7,11 +7,15 @@ const { readdirSync } = require('fs');
 
 const promiseQuery = Promise.promisify(db.query).bind(db);
 
-app.use('/:listingId', express.static(__dirname + '../../public'));
+app.use('/:listingId/', express.static(__dirname + '../../public'));
+app.use((req, res, next) => {
+  console.log(req)
+  next()
+})
 app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
-  var listingId = JSON.parse(req.params.listingId);
+  var listingId = req.params.listingId;
   
   if (listingId > 99 || listingId < 0) { 
     res.sendStatus(404);
@@ -38,14 +42,16 @@ app.get('/api/reservation/:listingId', (req, res) => {
     })
 })
 
-app.get('/:listingId', (req, res) => {
-  console.log('current page index: ', req.params.listingId)
-  if (req.params.listingId > 99) {
-    res.sendStatus(404);
-  }
-  // var itemPage = path.join(__dirname, '../public/index.html');
+// app.get('/:listingId/', (req, res) => {
+//   console.log('******************************')
+//   // console.log('current page index: ', req.params.listingId)
+//   if (JSON.parse(req.params.listingId) > 99) {
+//     res.sendStatus(404);
+//   }
+//   // var itemPage = path.join(__dirname, '../public/index.html');
 
-  // res.sendFile(itemPage); 
-})
+//   // res.sendFile(itemPage); 
+//   res.sendStatus(200)
+// })
 
 module.exports.app = app; 
