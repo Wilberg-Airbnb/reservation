@@ -10,11 +10,11 @@ describe('<App />', () => {
   it('should set listingId state based on url', async () => {
 
     global.window = Object.create(window);
-    const url = "http://localhost:8888/27";
+    const url = "http://localhost:8888/27/";
     Object.defineProperty(window, 'location', {
       value: {
         href: url,
-        pathname: '/27'
+        pathname: '/27/'
       }
     })
 

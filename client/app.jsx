@@ -32,7 +32,6 @@ class App extends React.Component {
         console.log('AXIOS SUCCESS:', res)
 
         this.setState({
-          listingId: res.data.listingId,
           availableDates: res.data.availableDates,
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
