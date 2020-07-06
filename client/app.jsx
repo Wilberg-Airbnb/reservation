@@ -10,6 +10,7 @@ class App extends React.Component {
     // this.requestedId = JSON.parse(window.location.href.split('/')[3]); 
     this.requestedId = JSON.parse(window.location.pathname.slice(1, -1));
 
+    //init state values when static page is loaded
     this.state = {
       listingId: this.requestedId,
       availableDates: [],
@@ -21,13 +22,13 @@ class App extends React.Component {
   }
 
   getData() {
-    
+
     var listingId = this.state.listingId
 
     axios.get(`/api/reservation/${listingId}`)
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
-
+        //data for listing set when component mounts
         this.setState({
           availableDates: res.data.availableDates,
           standardPrice: res.data.standardPrice,
@@ -42,6 +43,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    //makes call to get data for listing
     this.getData();
 
   }

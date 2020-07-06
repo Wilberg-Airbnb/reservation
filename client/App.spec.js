@@ -7,6 +7,8 @@ import axios from "axios";
 
 Enzyme.configure({ adapter: new Adapter(), disableLifecycleMethods: true });
 
+//App unit testing
+
 describe('<App />', () => {
   it('should set listingId state based on url', async () => {
 
