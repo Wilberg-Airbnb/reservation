@@ -7,7 +7,7 @@ const { readdirSync } = require('fs');
 
 const promiseQuery = Promise.promisify(db.query).bind(db);
 
-app.use(express.static(__dirname + '../../public'));
+app.use('/:listingId', express.static(__dirname + '../../public'));
 app.use(express.json());
 
 app.get('/api/reservation/:listingId', (req, res) => {
@@ -38,14 +38,14 @@ app.get('/api/reservation/:listingId', (req, res) => {
     })
 })
 
-app.get('/:listingId', (req, res) => {
-  console.log('current page index: ', req.params.listingId)
-  if (req.params.listingId > 99) {
-    res.sendStatus(404);
-  }
-  var itemPage = path.join(__dirname, '../public/index.html');
+// app.get('/:listingId', (req, res) => {
+//   console.log('current page index: ', req.params.listingId)
+//   if (req.params.listingId > 99) {
+//     res.sendStatus(404);
+//   }
+//   var itemPage = path.join(__dirname, '../public/index.html');
 
-  res.sendFile(itemPage);
-})
+//   res.sendFile(itemPage);
+// })
 
 module.exports.app = app;
