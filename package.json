@@ -38,7 +38,7 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "test": "jest -c jest.config.js --coverage",
+    "test": "jest -c jest.config.js --coverage --silent",
     "test:watch": "jest -c jest.config.js --coverage --watch --silent --runInBand --detectOpenHandles",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
