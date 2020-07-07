@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
+- https://github.com/Wilberg-Airbnb/reviews
+- https://github.com/Wilberg-Airbnb/description
+- https://github.com/Wilberg-Airbnb/location
+- https://github.com/Wilberg-Airbnb/sam-johnson-proxy
 
 ## Table of Contents
 
@@ -17,14 +17,18 @@
 
 ## Usage
 
-> Some usage instructions
+> Please run 'npm run server:dev' to serve application on localhost:5000.
+> bundle will serve on http://localhost:5000/public/bundle.js
+> To retrieve reservation data for listing, use endpoint http://localhost:5000/api/reservation/:listingId.
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+- mysql ^2.18.1
+- React ^16.13.1
+- Webpack ^4.43.0
 
 ## Development
 
