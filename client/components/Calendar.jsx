@@ -5,24 +5,24 @@ const Calendar = (props) => {
 
   const Section = styled.section`
     height: 454.53px;
-    width: 615.73px;
+    width: 653.33px;
     border: 1px solid black;
   `
 
   const Head = styled.div`
     height: 65.73px;
-    width: 615.73px;
+    width: 653.33px;
   `
 
   const Window = styled.div`
-    height: 385px;
-    width: 615.73px;
+    height: 370px;
+    width: 653.33px;
     overflow: hidden;
     position: relative;
   `
 
   const Roll = styled.div`
-    height: 338.77 !important;
+    height: 370px !important;
     width: 5000px !important;
     transform: translateX(0px);
     position: absolute !important;
@@ -33,8 +33,8 @@ const Calendar = (props) => {
   `
 
   const Page = styled.div`
-    height: 338.77px;
-    width: 321.52px;
+    height: 370px;
+    width: 323px;
     border: 1px solid black;
     display: inline-block;
   `
