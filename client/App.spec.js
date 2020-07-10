@@ -2,7 +2,8 @@ import React from "react";
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount, shallow, configure } from "enzyme";
 import App from "./App.jsx";
-import Widget from "./components/Widget.jsx"
+import Widget from "./components/Widget.jsx";
+import Calendar from "./components/Calendar.jsx";
 import axios from "axios";
 
 Enzyme.configure({ adapter: new Adapter(), disableLifecycleMethods: true });
@@ -29,6 +30,12 @@ describe('<App />', () => {
     const wrapper = shallow(<App/>);
 
     expect(wrapper.find(Widget).exists()).toBeTruthy();
+  })
+
+  it('should render a Calendar', () => {
+    const wrapper = shallow(<App/>);
+
+    expect(wrapper.find(Calendar).exists).toBeTruthy();
   })
 
   it('should call getData w/ axios request on mount', async (done) => {

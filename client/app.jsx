@@ -53,7 +53,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar/>
+        <Calendar listingData={this.state}/>
       </div>
     );
   }
