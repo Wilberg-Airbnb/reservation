@@ -43,7 +43,9 @@ class Widget extends React.Component {
 
 const Container = styled.div`
   font-family: Poppins;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 22px;
+  line-height:26px;
   float: right;
   width: 338px;
   border: 2px solid rgb(221, 221, 221);
