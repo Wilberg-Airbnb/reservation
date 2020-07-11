@@ -4,7 +4,6 @@ module.export = {
       },
     collectCoverage: true,
     collectCoverageFrom: ["**/*.{js, jsx}", "!**/node_modules/**"],
-    coveragePathIgnorePatterns: ["/node_modules", "/public"],
-    coverageDirectory: "./testReports"
+    coveragePathIgnorePatterns: ["/node_modules", "/public"]
     // testURL: "localhost:8888.html"
   };

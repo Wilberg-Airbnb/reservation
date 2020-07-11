@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Page from './Page.jsx';
 
 const Calendar = (props) => {
 
@@ -32,12 +33,9 @@ const Calendar = (props) => {
     z-index: 0 !important;
   `
 
-  const Page = styled.div`
-    height: 370px;
-    width: 323px;
-    border: 1px solid black;
-    display: inline-block;
-  `
+  //Calendar has Header and a window containing the pages
+  //Roll is a very long div that has every page mapped out along it
+  //User will be able to click and slide the Roll left to display future months
 
   return (
     <Section>
