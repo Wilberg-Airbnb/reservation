@@ -32,6 +32,6 @@ describe('<Calendar/>', () => {
         
         expect(wrapper.exists()).toBeTruthy();
         expect(wrapper.props().listingData.listingId).toBe(54);
-        done()
+        done();
     })
 })

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Page from './Page.jsx';
 
 const Calendar = (props) => {
 
@@ -30,13 +31,6 @@ const Calendar = (props) => {
     display: block;
     position: absolute;
     z-index: 0 !important;
-  `
-
-  const Page = styled.div`
-    height: 370px;
-    width: 323px;
-    border: 1px solid black;
-    display: inline-block;
   `
 
   return (
