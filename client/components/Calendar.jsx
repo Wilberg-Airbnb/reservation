@@ -33,6 +33,10 @@ const Calendar = (props) => {
     z-index: 0 !important;
   `
 
+  //Calendar has Header and a window containing the pages
+  //Roll is a very long div that has every page mapped out along it
+  //User will be able to click and slide the Roll left to display future months
+
   return (
     <Section>
       <Head>

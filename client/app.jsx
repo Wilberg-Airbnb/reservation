@@ -22,6 +22,7 @@ class App extends React.Component {
     }
   }
 
+  //get data method for retrieving the listing data
   getData() {
 
     var listingId = this.state.listingId
@@ -48,6 +49,8 @@ class App extends React.Component {
     this.getData();
 
   }
+
+  //Widget will display Calendar as modal while Calendar will also be listed further down the page
 
   render() {
     return (
