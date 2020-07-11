@@ -1,2 +1,5 @@
 node_modules
-coverage
+
+# Ignore test-related files
+/coverage.data
+/coverage/
