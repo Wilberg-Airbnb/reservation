@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const renderDays = () => {
+  let result = [];
+  for (var i = 0; i < 31; i++) {
+    result.push(i + 1);
+  }
+
+  return result;
+};
+
 const Page = (props) => {
 
   const Month = styled.div`
@@ -27,6 +36,10 @@ const Page = (props) => {
     display: inline-block;
   `
 
+  const DayPicker = styled.section`
+    width: 100%;
+  `
+
   return (
     <Month>
       <MonthHeader>
@@ -41,6 +54,9 @@ const Page = (props) => {
           <DayWeek>S</DayWeek>
         </Week>
       </MonthHeader>
+      <DayPicker>
+        {renderDays().map(x => <DayWeek>{x}</DayWeek>)}
+      </DayPicker>
     </Month>
   )
 }
