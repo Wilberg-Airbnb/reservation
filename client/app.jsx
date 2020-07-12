@@ -18,7 +18,8 @@ class App extends React.Component {
       standardPrice: null,
       cleaningFee: null,
       weeklyDiscount: null,
-      refundable: false
+      refundable: false,
+      allDates: {}
     }
   }
 
@@ -44,10 +45,25 @@ class App extends React.Component {
       })
   }
 
+  generateDates() {
+    let today = new Date;
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    let dayCount = [...Array(367).keys()];
+
+    dayCount.map(day => {
+      let date = new Date(year, month, day).toString();
+      let details = date.split(' ');
+      let monthYear = `${details[1]} ${details[3]}`;
+      let dayDate = `${details[0]} ${details[2]}`;
+      this.state.allDates[monthYear] = dayDate
+    })
+  }
+
   componentDidMount() {
     //makes call to get data for listing
+    this.generateDates();
     this.getData();
-
   }
 
   //Widget will display Calendar as modal while Calendar will also be listed further down the page
