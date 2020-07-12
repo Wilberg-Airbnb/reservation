@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Page from './Page.jsx';
 
-const Calendar = (props) => {
+const Calendar = ({ listingData }) => {
 
   const Section = styled.section`
     height: 454.53px;
@@ -45,10 +45,7 @@ const Calendar = (props) => {
       </Head>
       <Window>
         <Roll>
-          <Page/>
-          <Page/>
-          <Page/>
-          <Page/>
+          {Object.keys(listingData.allDates).map(month => <Page monthDays={listingData.allDates[month]} monthName={month}></Page>)}
         </Roll>
       </Window>
     </Section>

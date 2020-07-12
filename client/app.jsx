@@ -56,7 +56,7 @@ class App extends React.Component {
       let details = date.split(' ');
       let monthYear = `${details[1]} ${details[3]}`;
       let dayDate = `${details[0]} ${details[2]}`;
-      this.state.allDates[monthYear] = dayDate
+      this.state.allDates[monthYear] = dayDate;
     })
   }
 
