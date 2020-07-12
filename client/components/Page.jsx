@@ -11,7 +11,7 @@ const renderDays = () => {
   return result;
 };
 
-const Page = (props) => {
+const Page = ({ monthDays, monthName }) => {
 
   //Page Element Styles
 
@@ -47,7 +47,7 @@ const Page = (props) => {
   return (
     <Month>
       <MonthHeader>
-        <h6>Month 2020</h6>
+        <h6>{monthName}</h6>
         <Week>
           <DayWeek>M</DayWeek>
           <DayWeek>T</DayWeek>
