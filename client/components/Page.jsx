@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-//helper function to create 21 DayWeek divs (temp)
-const renderDays = () => {
-  let result = [];
-  for (var i = 0; i < 31; i++) {
-    result.push(i + 1);
-  }
+//helper function to add padding according to what day of the week the month starts on
 
-  return result;
-};
-
-const createBuffer = (day) => {
-  
+const createPad = (day) => {
+  let dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  let padding = dayNames.indexOf(day);
+  return [...Array(padding).keys()];
 }
 
 const Page = ({ monthDays, monthName }) => {
@@ -47,7 +41,10 @@ const Page = ({ monthDays, monthName }) => {
     width: 100%;
   `
 
-  //Page rendering header with days of the week & temporary map of all days in the month
+  //Page rendering header, loads padding depending on month start and renders all days for month
+  //TODO bug where first month shifts position (happens only when adding padding)
+  //TODO Change tests to match new props for unit testing
+
   return (
     <Month>
       <MonthHeader>
@@ -63,6 +60,7 @@ const Page = ({ monthDays, monthName }) => {
         </Week>
       </MonthHeader>
       <DayPicker>
+        {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('Pad 00'))}
         {monthDays.map(x => <DayWeek>{x.split(' ')[1]}</DayWeek>)}
       </DayPicker>
     </Month>
