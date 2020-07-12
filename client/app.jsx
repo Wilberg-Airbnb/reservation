@@ -47,9 +47,9 @@ class App extends React.Component {
 
   generateDates() {
     let today = new Date;
-    let month = today.getMonth() + 1;
+    let month = today.getMonth();
     let year = today.getFullYear();
-    let dayCount = [...Array(367).keys()];
+    let dayCount = [...Array(367).keys()].slice(1);
 
     dayCount.map(day => {
       let date = new Date(year, month, day).toString();

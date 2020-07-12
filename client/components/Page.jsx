@@ -11,6 +11,10 @@ const renderDays = () => {
   return result;
 };
 
+const createBuffer = (day) => {
+  
+}
+
 const Page = ({ monthDays, monthName }) => {
 
   //Page Element Styles
@@ -59,7 +63,7 @@ const Page = ({ monthDays, monthName }) => {
         </Week>
       </MonthHeader>
       <DayPicker>
-        {renderDays().map(x => <DayWeek>{x}</DayWeek>)}
+        {monthDays.map(x => <DayWeek>{x.split(' ')[1]}</DayWeek>)}
       </DayPicker>
     </Month>
   )
