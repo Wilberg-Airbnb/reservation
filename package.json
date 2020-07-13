@@ -42,7 +42,8 @@
     "test:watch": "jest -c jest.config.js --coverage --watch --silent --runInBand --detectOpenHandles",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
-    "server:dev": "nodemon server/server.js"
+    "server:dev": "nodemon server/server.js",
+    "start": "node server/server.js"
   },
   "jest": {
     "modulePaths": [
