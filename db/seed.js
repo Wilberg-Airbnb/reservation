@@ -35,3 +35,9 @@ readPromise(__dirname + '/dummyData.txt', 'utf-8')
 		console.error('read promise chain failed', err);
 		
 	})
+
+	//if a database is in a docker container, do you need to connect to it from another docker container?
+	//no
+	//we need to seed docker container
+	//if we want to seed our container database, then if it is connected to our local server, the seed script should work
+	//if docer db listening on 3306, 
