@@ -1,10 +1,21 @@
 version: '3'
 
 services:
+
+  airbnb-res:
+    container_name: res
+    build: ./
+    command: npm run start
+    working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
+    ports:
+      - "5000:5000"
+
   mysql:
     image: mysql:latest
-    container_name: reservation
+    container_name: airbrbRes
     environment:
       - MYSQL_ROOT_PASSWORD=null
+      - MYSQL_DATABASE=airbrbRes
     ports:
       - "3306:3306"
+      
