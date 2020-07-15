@@ -3,15 +3,13 @@ version: '3'
 services:
 
   airbnb-res:
-    container_name: res
     build: ./
-    command: ["wait-for-it.sh", "db:3306", "--", "npm run start"]
     working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
     ports:
       - "8080:5000"
     depends_on:
-      - db
-    restart: always
+      - "db"
+    command: ["wait-for-it.sh", "db:3306", "--", "npm", "start"]
     volumes:
       - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
 
