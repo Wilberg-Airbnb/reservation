@@ -2,23 +2,27 @@ version: '3'
 
 services:
 
-  # airbnb-res:
-  #   container_name: res
-  #   build: ./
-  #   command: npm run start
-  #   working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
-  #   ports:
-  #     - "5000:5000"
-  #   links:
-  #     - mysql
+  airbnb-res:
+    container_name: res
+    build: ./
+    command: ["wait-for-it.sh", "db:3306", "--", "npm run start"]
+    working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
+    ports:
+      - "8080:5000"
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
 
-  mysql:
+  db:
     image: mysql:latest
-    container_name: airbrbRes
     environment:
       - MYSQL_ROOT_PASSWORD=null
       - MYSQL_DATABASE=airbrbRes
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
     volumes:
       - ./server/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    command: --default-authentication-plugin=mysql_native_password
