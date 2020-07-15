@@ -3,9 +3,9 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: '4000',
+    port: '3306',
     user: 'root',
-    password: null,
+    password: 'null',
     database: 'airbrbRes'
 });
 

@@ -2,13 +2,15 @@ version: '3'
 
 services:
 
-  airbnb-res:
-    container_name: res
-    build: ./
-    command: npm run start
-    working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
-    ports:
-      - "5000:5000"
+  # airbnb-res:
+  #   container_name: res
+  #   build: ./
+  #   command: npm run start
+  #   working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
+  #   ports:
+  #     - "5000:5000"
+  #   links:
+  #     - mysql
 
   mysql:
     image: mysql:latest
@@ -18,4 +20,5 @@ services:
       - MYSQL_DATABASE=airbrbRes
     ports:
       - "3306:3306"
-      
+    volumes:
+      - ./server/schema.sql:/docker-entrypoint-initdb.d/schema.sql
