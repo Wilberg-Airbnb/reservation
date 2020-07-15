@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS airbrbRes;
 
 CREATE DATABASE airbrbRes;
 
-ALTER USER root IDENTIFIED WITH mysql_native_password BY 'null';
-
 USE airbrbRes;
 
 CREATE TABLE reservation (
@@ -27,6 +25,9 @@ CREATE TABLE dates (
         ON DELETE CASCADE
 );
 
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'null';
+
+FLUSH PRIVILEGES;
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
