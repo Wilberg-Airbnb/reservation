@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -6,21 +6,25 @@ services:
     build: ./
     working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
     ports:
-      - "8080:5000"
-    depends_on:
+      - "5000:5000"
+    expose:
+      - 5000
+    links:
       - "db"
     command: ["wait-for-it.sh", "db:3306", "--", "npm", "start"]
     volumes:
       - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
+      - ./:/Users/samjohnson/Documents/hrfiles/airbrb/reservation
 
   db:
-    image: mysql:latest
+    image: mysql:8
     environment:
-      - MYSQL_ROOT_PASSWORD=null
       - MYSQL_DATABASE=airbrbRes
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=null
     ports:
       - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - ./server/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     command: --default-authentication-plugin=mysql_native_password

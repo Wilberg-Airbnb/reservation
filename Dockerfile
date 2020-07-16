@@ -1,13 +1,7 @@
-FROM node:14
+FROM node:10
 
 WORKDIR /Users/samjohnson/Documents/hrfiles/airbrb/reservation
 
-COPY package*.json ./
+COPY ./ ./
 
 RUN npm install
-
-COPY . ./
-
-EXPOSE 5000
-
-CMD ["npm", "start"]

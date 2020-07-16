@@ -25,10 +25,6 @@ CREATE TABLE dates (
         ON DELETE CASCADE
 );
 
-ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'null';
-
-FLUSH PRIVILEGES;
-
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
