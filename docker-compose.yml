@@ -7,11 +7,9 @@ services:
     working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
     ports:
       - "5000:5000"
-    expose:
-      - 5000
     links:
       - "db"
-    command: ["wait-for-it.sh", "db:3306", "--", "npm", "start"]
+    command: ["wait-for-it.sh", "db:3306", "--", "npm", "run", "containers"]
     volumes:
       - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
       - ./:/Users/samjohnson/Documents/hrfiles/airbrb/reservation
@@ -23,8 +21,6 @@ services:
       - MYSQL_ROOT_PASSWORD=null
     ports:
       - "3306:3306"
-    expose:
-      - 3306
     volumes:
       - ./server/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     command: --default-authentication-plugin=mysql_native_password
