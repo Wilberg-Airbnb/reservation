@@ -43,7 +43,8 @@
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
     "server:dev": "nodemon server/server.js",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "containers": "concurrently \"npm run seed\" \"npm run start\""
   },
   "jest": {
     "modulePaths": [
