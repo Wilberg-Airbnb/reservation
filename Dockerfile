@@ -1,7 +1,9 @@
-FROM node:10
+FROM node:14
 
 WORKDIR /Users/samjohnson/Documents/hrfiles/airbrb/reservation
 
-COPY ./ ./
+COPY package.json ./
 
 RUN npm install
+
+COPY ./ ./

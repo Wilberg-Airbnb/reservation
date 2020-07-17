@@ -5,7 +5,8 @@ const db = require('./index');
 const readPromise = Promise.promisify(fs.readFile);
 const promiseQuery = Promise.promisify(db.query).bind(db);
 
-readPromise(__dirname + '/dummyData.txt', 'utf-8')
+const seedFunc = () => {
+	return readPromise(__dirname + '/dummyData.txt', 'utf-8')
 	.then(text => {
 		return JSON.parse(text);
 	})
@@ -29,13 +30,20 @@ readPromise(__dirname + '/dummyData.txt', 'utf-8')
 				})
 		})
 
-		return Promise.all(listingInserts);
+		return Promise.all(listingInserts)
+	})
+	.then(empty => {
+		console.log('Here');
+		process.exit(0);
 	})
 	.catch(err => {
 		console.error('read promise chain failed', err);
-		
+		process.exit(1);
 	})
+}
 
+seedFunc();
+ 
 	//if a database is in a docker container, do you need to connect to it from another docker container?
 	//no
 	//we need to seed docker container
