@@ -18,6 +18,7 @@ const Page = ({ monthDays, monthName }) => {
     width: 323px;
     border: 1px solid black;
     display: inline-block;
+    vertical-align: top;
   `
 
   const MonthHeader = styled.section`
@@ -35,6 +36,7 @@ const Page = ({ monthDays, monthName }) => {
     width: 43.5px;
     border 1px solid black;
     display: inline-block;
+    vertical-align: top;
   `
 
   const DayPicker = styled.section`
@@ -42,7 +44,6 @@ const Page = ({ monthDays, monthName }) => {
   `
 
   //Page rendering header, loads padding depending on month start and renders all days for month
-  //TODO bug where first month shifts position (happens only when adding padding)
   //TODO Change tests to match new props for unit testing
 
   return (
