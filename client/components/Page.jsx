@@ -44,7 +44,7 @@ const DayPicker = styled.section`
   width: 100%;
 `
 
-const Page = ({ monthDays, monthName }) => {
+const Page = ({ monthDays, monthName, monthData }) => {
 
 
   //Page rendering header, loads padding depending on month start and renders all days for month
@@ -66,7 +66,15 @@ const Page = ({ monthDays, monthName }) => {
       </MonthHeader>
       <DayPicker>
         {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('  '))}
-        {monthDays.map((x, index) => <DayWeek key={index}>{x.split(' ')[1]}</DayWeek>)}
+        {monthDays.map((x, index) => {
+
+          let available = monthData.map(d => new Date(d.date).toString().split(' ')[2])
+          if (available.indexOf(x.split(' ')[1]) !== -1) {
+            return <DayWeek isAvailable={true} key={index}>{x.split(' ')[1]}</DayWeek>
+          } else {
+            return <DayWeek isAvailable={false} key={index}>{x.split(' ')[1]}</DayWeek>
+          }
+        })}
       </DayPicker>
     </Month>
   )
