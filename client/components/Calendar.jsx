@@ -31,6 +31,7 @@ const Roll = styled.div`
   z-index: 0 !important;
 `
 
+//function to help pull available for each month that we create a Page for
 const getMonthData = (monthName, data) => {
   let datesForMonth = data.filter(date => {
     let details = new Date(date.date).toString().split(' ');
