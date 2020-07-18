@@ -31,6 +31,16 @@ const Roll = styled.div`
   z-index: 0 !important;
 `
 
+const getMonthData = (monthName, data) => {
+  let datesForMonth = data.filter(date => {
+    let details = new Date(date.date).toString().split(' ');
+    let currentMonthName = details[1] + ' ' + details[3]
+    return monthName === currentMonthName;
+  })
+
+  return datesForMonth;
+}
+
 const Calendar = ({ listingData }) => {
 
 
@@ -46,7 +56,7 @@ const Calendar = ({ listingData }) => {
       </Head>
       <Window>
         <Roll>
-          {Object.keys(listingData.allDates).map((month, index) => <Page monthDays={listingData.allDates[month]} monthName={month} key={index}></Page>)}
+          {Object.keys(listingData.allDates).map((month, index) => <Page monthDays={listingData.allDates[month]} monthName={month} monthData={getMonthData(month, listingData.availableDates)}  key={index}></Page>)}
         </Roll>
       </Window>
     </Section>
