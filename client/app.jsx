@@ -8,7 +8,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.requestedId = JSON.parse(window.location.href.split('/')[3]); 
     this.requestedId = JSON.parse(window.location.pathname.slice(1, -1));
 
     //init state values when static page is loaded
@@ -28,7 +27,7 @@ class App extends React.Component {
 
     var listingId = this.state.listingId
 
-    axios.get(`http://localhost:5000/api/reservation/${listingId}`)
+    axios.get(`http://${window.location.host}/api/reservation/${listingId}`)
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts

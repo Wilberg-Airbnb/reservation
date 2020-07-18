@@ -2,10 +2,10 @@ const mysql = require('mysql');
 
 
 const connection = mysql.createConnection({
-    host: 'db',
+    host: process.env.DB_HOST || 'localhost',
     port: '3306',
     user: 'root',
-    password: 'null',
+    password: process.env.DB_PASS || null,
     database: 'airbrbRes'
 });
 
