@@ -9,39 +9,40 @@ const createPad = (day) => {
   return [...Array(padding).keys()];
 }
 
+//Page Element Styles
+
+const Month = styled.div`
+  height: 370px;
+  width: 323px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: top;
+`
+
+const MonthHeader = styled.section`
+  height: 91px;
+  width: 100%;
+`
+
+const Week = styled.div`
+  height: 32px;
+  width: 100%;
+  border: 1px solid black;
+`
+const DayWeek = styled.div`
+  height: 32px;
+  width: 43.5px;
+  border 1px solid black;
+  display: inline-block;
+  vertical-align: top;
+`
+
+const DayPicker = styled.section`
+  width: 100%;
+`
+
 const Page = ({ monthDays, monthName }) => {
 
-  //Page Element Styles
-
-  const Month = styled.div`
-    height: 370px;
-    width: 323px;
-    border: 1px solid black;
-    display: inline-block;
-    vertical-align: top;
-  `
-
-  const MonthHeader = styled.section`
-    height: 91px;
-    width: 100%;
-  `
-
-  const Week = styled.div`
-    height: 32px;
-    width: 100%;
-    border: 1px solid black;
-  `
-  const DayWeek = styled.div`
-    height: 32px;
-    width: 43.5px;
-    border 1px solid black;
-    display: inline-block;
-    vertical-align: top;
-  `
-
-  const DayPicker = styled.section`
-    width: 100%;
-  `
 
   //Page rendering header, loads padding depending on month start and renders all days for month
   //TODO Change tests to match new props for unit testing
