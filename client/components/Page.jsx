@@ -30,11 +30,14 @@ const Week = styled.div`
   border: 1px solid black;
 `
 const DayWeek = styled.div`
-  height: 32px;
+  height: 25px;
   width: 43.5px;
   border 1px solid black;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100px;
+  padding-top: 5px;
 `
 
 const DayPicker = styled.section`
@@ -62,7 +65,7 @@ const Page = ({ monthDays, monthName }) => {
         </Week>
       </MonthHeader>
       <DayPicker>
-        {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('Pad 00'))}
+        {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('  '))}
         {monthDays.map((x, index) => <DayWeek key={index}>{x.split(' ')[1]}</DayWeek>)}
       </DayPicker>
     </Month>
