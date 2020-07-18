@@ -63,7 +63,7 @@ const Page = ({ monthDays, monthName }) => {
       </MonthHeader>
       <DayPicker>
         {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('Pad 00'))}
-        {monthDays.map(x => <DayWeek>{x.split(' ')[1]}</DayWeek>)}
+        {monthDays.map((x, index) => <DayWeek key={index}>{x.split(' ')[1]}</DayWeek>)}
       </DayPicker>
     </Month>
   )
