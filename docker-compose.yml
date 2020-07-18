@@ -7,13 +7,16 @@ services:
     build: ./
     working_dir: /Users/samjohnson/Documents/hrfiles/airbrb/reservation
     ports:
-      - "5000:5000"
+      - "80:5000"
     links:
       - "db"
     command: bash -c "wait-for-it.sh db:3306 && npm install && npm run seed && npm run start"
     volumes:
       - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
       - ./:/Users/samjohnson/Documents/hrfiles/airbrb/reservation
+    environment:
+      - DB_HOST=db
+      - DB_PASS=null
 
   db:
     restart: always
