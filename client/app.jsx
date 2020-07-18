@@ -61,6 +61,10 @@ class App extends React.Component {
     })
   }
 
+  selectDate(e) {
+    console.log(e)
+  }
+
   componentDidMount() {
     //makes call to get data for listing
     this.generateDates();
@@ -73,7 +77,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state}/>
+        <Calendar listingData={this.state} />
       </div>
     );
   }

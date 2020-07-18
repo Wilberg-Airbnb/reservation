@@ -29,6 +29,7 @@ const Week = styled.div`
   width: 100%;
   border: 1px solid black;
 `
+
 const DayWeek = styled.div`
   height: 25px;
   width: 43.5px;
@@ -38,6 +39,26 @@ const DayWeek = styled.div`
   text-align: center;
   border-radius: 100px;
   padding-top: 5px;
+`
+
+const Day = styled.div`
+  height: 25px;
+  width: 43.5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100px;
+  padding-top: 5px;
+  text-decoration: line-through;
+  color: grey;
+
+  ${({ isAvailable }) => isAvailable && `
+    text-decoration: none;
+    color: black;
+    &:hover {
+      border 1px solid black;
+    }
+  `}
 `
 
 const DayPicker = styled.section`
@@ -70,9 +91,9 @@ const Page = ({ monthDays, monthName, monthData }) => {
 
           let available = monthData.map(d => new Date(d.date).toString().split(' ')[2])
           if (available.indexOf(x.split(' ')[1]) !== -1) {
-            return <DayWeek isAvailable={true} key={index}>{x.split(' ')[1]}</DayWeek>
+            return <Day isAvailable={true} key={index}>{x.split(' ')[1]}</Day>
           } else {
-            return <DayWeek isAvailable={false} key={index}>{x.split(' ')[1]}</DayWeek>
+            return <Day isAvailable={false} key={index}>{x.split(' ')[1]}</Day>
           }
         })}
       </DayPicker>
