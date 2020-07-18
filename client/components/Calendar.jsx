@@ -46,7 +46,7 @@ const Calendar = ({ listingData }) => {
       </Head>
       <Window>
         <Roll>
-          {Object.keys(listingData.allDates).map(month => <Page monthDays={listingData.allDates[month]} monthName={month}></Page>)}
+          {Object.keys(listingData.allDates).map((month, index) => <Page monthDays={listingData.allDates[month]} monthName={month} key={index}></Page>)}
         </Roll>
       </Window>
     </Section>
