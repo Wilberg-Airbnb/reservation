@@ -19,6 +19,7 @@ class App extends React.Component {
       weeklyDiscount: null,
       refundable: false,
       allDates: {},
+      bookStage: 'check-in',
       checkIn: '',
       checkOut: ''
     }
@@ -72,8 +73,17 @@ class App extends React.Component {
   selectDate(e, monthYear) {
     console.log(e, this.state)
     let selectedDay = e.target.innerHTML;
-    if (!this.state.checkIn) {
-      this.setState({checkIn: selectedDay + ' ' + monthYear})
+    if (this.state.bookStage === 'check-in') {
+      this.setState({
+        checkIn: selectedDay + ' ' + monthYear,
+        bookStage: 'checkout'
+      })
+    }
+    if (this.state.bookStage === 'checkout') {
+      this.setState({
+        checkOut: selectedDay + ' ' + monthYear,
+        bookStage: 'check-in'
+      })
     }
   }
 
