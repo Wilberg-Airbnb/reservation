@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Widget from './components/Widget.jsx'
 import axios from 'axios';
+import lodash from 'lodash';
 import Calendar from './components/Calendar.jsx'
 
 class App extends React.Component {
@@ -36,8 +37,10 @@ class App extends React.Component {
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts
+        let sortedDates = _.sortBy(res.data.availableDates, ["date"]);
+
         this.setState({
-          availableDates: res.data.availableDates,
+          availableDates: sortedDates,
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
