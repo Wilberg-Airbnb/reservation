@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Widget from './components/Widget.jsx'
 import axios from 'axios';
+import lodash from 'lodash';
 import Calendar from './components/Calendar.jsx'
 
 class App extends React.Component {
@@ -18,8 +19,13 @@ class App extends React.Component {
       cleaningFee: null,
       weeklyDiscount: null,
       refundable: false,
-      allDates: {}
+      allDates: {},
+      bookStage: 'check-in',
+      checkIn: '',
+      checkOut: ''
     }
+
+    this.selectDate = this.selectDate.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -31,8 +37,10 @@ class App extends React.Component {
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts
+        let sortedDates = _.sortBy(res.data.availableDates, ["date"]);
+
         this.setState({
-          availableDates: res.data.availableDates,
+          availableDates: sortedDates,
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
@@ -50,15 +58,37 @@ class App extends React.Component {
     let year = today.getFullYear();
     let dayCount = [...Array(367).keys()].slice(1);
 
+    let renderedDates = {};
+
     dayCount.map(day => {
       let date = new Date(year, month, day).toString();
       let details = date.split(' ');
       let monthYear = `${details[1]} ${details[3]}`;
       let dayDate = `${details[0]} ${details[2]}`;
-      this.state.allDates[monthYear] 
-      ? this.state.allDates[monthYear].push(dayDate) 
-      : this.state.allDates[monthYear] = [dayDate];
+      renderedDates[monthYear] 
+      ? renderedDates[monthYear].push(dayDate) 
+      : renderedDates[monthYear] = [dayDate];
     })
+
+    this.setState({allDates: renderedDates});
+  }
+
+  //deals with selecting dates and storing them in state
+  selectDate(e, monthYear) {
+    console.log(e, this.state)
+    let selectedDay = e.target.innerHTML;
+    if (this.state.bookStage === 'check-in') {
+      this.setState({
+        checkIn: selectedDay + ' ' + monthYear,
+        bookStage: 'checkout'
+      })
+    }
+    if (this.state.bookStage === 'checkout') {
+      this.setState({
+        checkOut: selectedDay + ' ' + monthYear,
+        bookStage: 'check-in'
+      })
+    }
   }
 
   componentDidMount() {
@@ -73,7 +103,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state}/>
+        <Calendar listingData={this.state} selectDate={this.selectDate}/>
       </div>
     );
   }

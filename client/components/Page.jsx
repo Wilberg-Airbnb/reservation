@@ -9,40 +9,67 @@ const createPad = (day) => {
   return [...Array(padding).keys()];
 }
 
-const Page = ({ monthDays, monthName }) => {
+//Page Element Styles
 
-  //Page Element Styles
+const Month = styled.div`
+  height: 370px;
+  width: 323px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: top;
+`
 
-  const Month = styled.div`
-    height: 370px;
-    width: 323px;
-    border: 1px solid black;
-    display: inline-block;
-  `
+const MonthHeader = styled.section`
+  height: 91px;
+  width: 100%;
+`
 
-  const MonthHeader = styled.section`
-    height: 91px;
-    width: 100%;
-  `
+const Week = styled.div`
+  height: 32px;
+  width: 100%;
+  border: 1px solid black;
+`
 
-  const Week = styled.div`
-    height: 32px;
-    width: 100%;
-    border: 1px solid black;
-  `
-  const DayWeek = styled.div`
-    height: 32px;
-    width: 43.5px;
-    border 1px solid black;
-    display: inline-block;
-  `
+const DayWeek = styled.div`
+  height: 25px;
+  width: 43.5px;
+  border 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100px;
+  padding-top: 5px;
+`
 
-  const DayPicker = styled.section`
-    width: 100%;
-  `
+const Day = styled.div`
+  height: 25px;
+  width: 43.5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100px;
+  padding-top: 5px;
+  text-decoration: line-through;
+  color: grey;
 
+  ${({ isAvailable }) => isAvailable && `
+    text-decoration: none;
+    color: black;
+    &:hover {
+      border 1px solid black;
+    }
+  `}
+`
+
+const DayPicker = styled.section`
+  width: 100%;
+`
+
+const Page = ({ monthDays, monthName, monthData, selectDate }) => {
+
+  let paddedMonthDays = monthDays.slice();
+  let startDay = paddedMonthDays[0].split(' ')[0]
   //Page rendering header, loads padding depending on month start and renders all days for month
-  //TODO bug where first month shifts position (happens only when adding padding)
   //TODO Change tests to match new props for unit testing
 
   return (
@@ -60,8 +87,19 @@ const Page = ({ monthDays, monthName }) => {
         </Week>
       </MonthHeader>
       <DayPicker>
-        {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('Pad 00'))}
-        {monthDays.map(x => <DayWeek>{x.split(' ')[1]}</DayWeek>)}
+
+        {createPad(startDay).forEach(pad => paddedMonthDays.unshift('  '))}
+
+        {paddedMonthDays.map((x, index) => {
+
+          let available = monthData.map(d => new Date(d.date).toString().split(' ')[2])
+          if (available.indexOf(x.split(' ')[1]) !== -1) {
+            return <Day isAvailable={true} key={index} onClick={(e) => {selectDate(e, monthName)}}>{x.split(' ')[1]}</Day>
+          } else {
+            return <Day isAvailable={false} key={index}>{x.split(' ')[1]}</Day>
+          }
+
+        })}
       </DayPicker>
     </Month>
   )
