@@ -65,10 +65,10 @@ const DayPicker = styled.section`
   width: 100%;
 `
 
-const Page = ({ monthDays, monthName, monthData }) => {
+const Page = ({ monthDays, monthName, monthData, selectDate }) => {
 
   let paddedMonthDays = monthDays.slice();
-  let theDay = paddedMonthDays[0].split(' ')[0]
+  let startDay = paddedMonthDays[0].split(' ')[0]
   //Page rendering header, loads padding depending on month start and renders all days for month
   //TODO Change tests to match new props for unit testing
 
@@ -88,13 +88,13 @@ const Page = ({ monthDays, monthName, monthData }) => {
       </MonthHeader>
       <DayPicker>
 
-        {createPad(theDay).forEach(pad => paddedMonthDays.unshift('  '))}
+        {createPad(startDay).forEach(pad => paddedMonthDays.unshift('  '))}
 
         {paddedMonthDays.map((x, index) => {
 
           let available = monthData.map(d => new Date(d.date).toString().split(' ')[2])
           if (available.indexOf(x.split(' ')[1]) !== -1) {
-            return <Day isAvailable={true} key={index}>{x.split(' ')[1]}</Day>
+            return <Day isAvailable={true} key={index} onClick={(e) => {selectDate(e)}}>{x.split(' ')[1]}</Day>
           } else {
             return <Day isAvailable={false} key={index}>{x.split(' ')[1]}</Day>
           }

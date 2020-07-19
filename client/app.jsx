@@ -20,6 +20,8 @@ class App extends React.Component {
       refundable: false,
       allDates: {}
     }
+
+    this.selectDate = this.selectDate.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -66,7 +68,7 @@ class App extends React.Component {
   }
 
   selectDate(e) {
-    console.log(e)
+    console.log(e, this.state)
   }
 
   componentDidMount() {
@@ -81,7 +83,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state} />
+        <Calendar listingData={this.state} selectDate={this.selectDate}/>
       </div>
     );
   }

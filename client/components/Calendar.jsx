@@ -42,7 +42,7 @@ const getMonthData = (monthName, data) => {
   return datesForMonth;
 }
 
-const Calendar = ({ listingData }) => {
+const Calendar = ({ listingData, selectDate }) => {
 
 
   //Calendar has Header and a window containing the pages
@@ -58,7 +58,7 @@ const Calendar = ({ listingData }) => {
       <Window>
         <Roll>
           {Object.keys(listingData.allDates).map((month, index) => {
-            return <Page monthDays={listingData.allDates[month]} monthName={month} monthData={getMonthData(month, listingData.availableDates)}  key={index}/>
+            return <Page monthDays={listingData.allDates[month]} monthName={month} monthData={getMonthData(month, listingData.availableDates)} selectDate={selectDate} key={index}/>
           })}
         </Roll>
       </Window>
