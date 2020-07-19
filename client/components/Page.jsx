@@ -67,7 +67,8 @@ const DayPicker = styled.section`
 
 const Page = ({ monthDays, monthName, monthData }) => {
 
-
+  let paddedMonthDays = monthDays.slice();
+  let theDay = paddedMonthDays[0].split(' ')[0]
   //Page rendering header, loads padding depending on month start and renders all days for month
   //TODO Change tests to match new props for unit testing
 
@@ -86,8 +87,10 @@ const Page = ({ monthDays, monthName, monthData }) => {
         </Week>
       </MonthHeader>
       <DayPicker>
-        {createPad(monthDays[0].split(' ')[0]).forEach(pad => monthDays.unshift('  '))}
-        {monthDays.map((x, index) => {
+
+        {createPad(theDay).forEach(pad => paddedMonthDays.unshift('  '))}
+
+        {paddedMonthDays.map((x, index) => {
 
           let available = monthData.map(d => new Date(d.date).toString().split(' ')[2])
           if (available.indexOf(x.split(' ')[1]) !== -1) {
@@ -95,6 +98,7 @@ const Page = ({ monthDays, monthName, monthData }) => {
           } else {
             return <Day isAvailable={false} key={index}>{x.split(' ')[1]}</Day>
           }
+
         })}
       </DayPicker>
     </Month>
