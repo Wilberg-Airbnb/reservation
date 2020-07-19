@@ -18,7 +18,9 @@ class App extends React.Component {
       cleaningFee: null,
       weeklyDiscount: null,
       refundable: false,
-      allDates: {}
+      allDates: {},
+      checkIn: '',
+      checkOut: ''
     }
 
     this.selectDate = this.selectDate.bind(this);
@@ -67,8 +69,12 @@ class App extends React.Component {
     this.setState({allDates: renderedDates});
   }
 
-  selectDate(e) {
+  selectDate(e, monthYear) {
     console.log(e, this.state)
+    let selectedDay = e.target.innerHTML;
+    if (!this.state.checkIn) {
+      this.setState({checkIn: selectedDay + ' ' + monthYear})
+    }
   }
 
   componentDidMount() {
