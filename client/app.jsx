@@ -50,15 +50,19 @@ class App extends React.Component {
     let year = today.getFullYear();
     let dayCount = [...Array(367).keys()].slice(1);
 
+    let renderedDates = {};
+
     dayCount.map(day => {
       let date = new Date(year, month, day).toString();
       let details = date.split(' ');
       let monthYear = `${details[1]} ${details[3]}`;
       let dayDate = `${details[0]} ${details[2]}`;
-      this.state.allDates[monthYear] 
-      ? this.state.allDates[monthYear].push(dayDate) 
-      : this.state.allDates[monthYear] = [dayDate];
+      renderedDates[monthYear] 
+      ? renderedDates[monthYear].push(dayDate) 
+      : renderedDates[monthYear] = [dayDate];
     })
+
+    this.setState({allDates: renderedDates});
   }
 
   selectDate(e) {
