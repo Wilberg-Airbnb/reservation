@@ -73,6 +73,7 @@ class App extends React.Component {
     this.setState({allDates: renderedDates});
   }
 
+  //deals with selecting dates and storing them in state
   selectDate(e, monthYear) {
     console.log(e, this.state)
     let selectedDay = e.target.innerHTML;
