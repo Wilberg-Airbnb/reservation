@@ -16,8 +16,8 @@ const Widget = ({listingData}) => {
         </WidgetHead>
         <BookPick id="calendar-picker">
           <CalPick>
-            <input type="date" id="datemin" name="datemin" value={formatCalInput(listingData.checkIn)}></input>
-            <input type="date" id="datemax" name="datemax" value={formatCalInput(listingData.checkOut)}></input>
+            <input type="date" id="datemin" name="datemin" defaultValue={formatCalInput(listingData.checkIn)}></input>
+            <input type="date" id="datemax" name="datemax" defaultValue={formatCalInput(listingData.checkOut)}></input>
           </CalPick>
           <p>GUESTS</p>
         </BookPick>
