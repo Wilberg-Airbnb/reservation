@@ -56,6 +56,7 @@ class App extends React.Component {
       })
   }
 
+  //generates all dates from this month that will populate our calendar when we pull up page
   generateDates() {
     let today = new Date;
     let month = today.getMonth();
@@ -77,24 +78,19 @@ class App extends React.Component {
     this.setState({allDates: renderedDates});
   }
 
+
   //deals with selecting dates and storing them in state
   selectDate(e, monthYear) {
-
-    
+    //format selected element data for checking
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
-
-    console.log(e.target.id)
-    console.log(e.target.innerHTML + ' ' + monthYear)
     
+    //if we're in check-in stage...
     if (this.state.bookStage === 'check-in') {
       let el = document.getElementById(e.target.id);
       el.classList.add('selected')
-      this.setState({
-        checkIn: selectedDay + ' ' + monthYear,
-        bookStage: 'checkout'
-      })
 
+      //we filter out all dates that are not possible as checkout dates
       let checkoutDates = [];
 
       while (true) {
@@ -107,6 +103,7 @@ class App extends React.Component {
 
         selectedDay++
 
+        //logic dealing with turnover from one month or year to the next
         if (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
           selectedDay = 1
           let nextMonthIndex = new Date(monthYear).getMonth() + 1
@@ -121,26 +118,27 @@ class App extends React.Component {
         }
       }
 
-      this.setState({availableDates: checkoutDates});
+      //set availableDates to only the selected day and available checkout dates, checkin to selection and bookStage to checkout
+      this.setState({
+        availableDates: checkoutDates,
+        checkIn: selectedDay + ' ' + monthYear,
+        bookStage: 'checkout'
+      });
     }
 
+    //if we are in checkout stage when selecting...
     if (this.state.bookStage === 'checkout') {
-      this.setState({
-        checkOut: selectedDay + ' ' + monthYear,
-        bookStage: 'invoice'
-      })
 
+      //filter out all dates except the ones containing your stay
       let stay = [];
 
       while (true) {
-
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
-        
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
+          //add selected class to dates and push to stay
           let padDay = _.padStart(selectedDay, 2, '0')
           let el = document.getElementById(padDay + ' ' + monthYear);
           el.classList.add('selected')
-          console.log(el)
           stay.push(filtered[0])
         } else {
           break
@@ -148,6 +146,7 @@ class App extends React.Component {
 
         selectedDay--
 
+        //logic dealing with turnover from one month/year to the previous
         if (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
           selectedDay = 31
           let nextMonthIndex = new Date(monthYear).getMonth() - 1
@@ -156,17 +155,23 @@ class App extends React.Component {
             yearIndex--
             nextMonthIndex = 11
           }
-
           let details = new Date(yearIndex, nextMonthIndex).toString().split(' ');
           monthYear = details[1] + ' ' + details[3];
-
           while (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
             selectedDay--
           }
         }
       }
 
-      this.setState({availableDates: stay})
+      //set state to stay, checkout to selected end date and bookStage to final invoice
+      this.setState({
+        availableDates: stay,
+        checkOut: selectedDay + ' ' + monthYear,
+        bookStage: 'invoice'
+      })
+
+      //TODO must write logic to clear calendar when user wants to reselect dates
+      //TODO pull up invoice for remaining availableDates after selection
     }
 
   }
