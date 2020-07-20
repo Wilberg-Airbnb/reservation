@@ -123,7 +123,7 @@ class App extends React.Component {
     if (this.state.bookStage === 'checkout') {
       this.setState({
         checkOut: selectedDay + ' ' + monthYear,
-        bookStage: 'check-in'
+        bookStage: 'invoice'
       })
 
       let stay = [];

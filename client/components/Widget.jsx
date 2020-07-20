@@ -2,43 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 // import React from 'react-dom';
 
-class Widget extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listingId: this.props.listingData.listingId
-    };
-  }
+const Widget = ({listingData}) => {
+  return (
+    <Container>
+      <Content>
+        <WidgetHead id="widget-heading">
+          <p id="night-price">${listingData.standardPrice} / night</p>
+          <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
+        </WidgetHead>
+        <BookPick id="calendar-picker">
+          <CalPick>
+            <input type="date" id="datemin" name="datemin" value="2020-07-25"></input>
+            <input type="date" id="datemax" name="datemax"></input>
+          </CalPick>
+          <p>GUESTS</p>
+        </BookPick>
 
-  handleClick() {
-
-  }
-
-  componentDidMount() {
-    // console.log('widget inherits listing data: ', this.props.listingData)
-  }
-
-  render() {
-    return (
-      <Container>
-        <Content>
-          <WidgetHead id="widget-heading">
-            <p id="night-price">${this.props.listingData.standardPrice} / night</p>
-            <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
-          </WidgetHead>
-          <BookPick id="calendar-picker">
-            <CalPick>
-              <input type="date" id="datemin" name="datemin"></input>
-              <input type="date" id="datemax" name="datemax"></input>
-            </CalPick>
-            <p>GUESTS</p>
-          </BookPick>
-
-          <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Check availability</CheckButton>
-        </Content>
-      </Container>
-    )
-  }
+        <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Check availability</CheckButton>
+      </Content>
+    </Container>
+  )
 }
 
 const Container = styled.div`
