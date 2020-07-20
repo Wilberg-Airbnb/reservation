@@ -5,6 +5,10 @@ import axios from 'axios';
 import lodash from 'lodash';
 import Calendar from './components/Calendar.jsx'
 
+const dateString = (info) => {
+  return new Date(info).toISOString().slice(0, -14);
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -75,13 +79,36 @@ class App extends React.Component {
 
   //deals with selecting dates and storing them in state
   selectDate(e, monthYear) {
-    console.log(e, this.state)
-    let selectedDay = e.target.innerHTML;
+
+    let selectedDay = parseInt(e.target.innerHTML);
     if (this.state.bookStage === 'check-in') {
       this.setState({
         checkIn: selectedDay + ' ' + monthYear,
         bookStage: 'checkout'
       })
+
+      let checkoutDates = [];
+      let allAvailable = this.state.availableDates.map(x => dateString(x.date));
+      
+      console.log(dateString(selectedDay + ' ' + monthYear))
+
+      while (true) {
+        console.log(selectedDay)
+        let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
+        console.log(filtered)
+        if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
+          checkoutDates.push(filtered[0])
+        } else {
+          break
+        }
+        selectedDay++
+      }
+
+      console.log(checkoutDates)
+
+
+
+      this.setState({availableDates: checkoutDates});
     }
     if (this.state.bookStage === 'checkout') {
       this.setState({
