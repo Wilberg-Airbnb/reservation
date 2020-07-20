@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import React from 'react-dom';
+
+const formatCalInput = (bookDate) => {
+  if (bookDate === "") { return "" }
+  return new Date(bookDate).toISOString().slice(0, 10);
+}
 
 const Widget = ({listingData}) => {
   return (
@@ -12,8 +16,8 @@ const Widget = ({listingData}) => {
         </WidgetHead>
         <BookPick id="calendar-picker">
           <CalPick>
-            <input type="date" id="datemin" name="datemin" value="2020-07-25"></input>
-            <input type="date" id="datemax" name="datemax"></input>
+            <input type="date" id="datemin" name="datemin" value={formatCalInput(listingData.checkIn)}></input>
+            <input type="date" id="datemax" name="datemax" value={formatCalInput(listingData.checkOut)}></input>
           </CalPick>
           <p>GUESTS</p>
         </BookPick>
