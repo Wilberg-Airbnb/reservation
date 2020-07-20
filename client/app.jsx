@@ -86,7 +86,8 @@ class App extends React.Component {
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
     let stay = [];
-    
+
+    //CHECK-IN STAGE *********************************************************
     //if we're in check-in stage...
     if (this.state.bookStage === 'check-in') {
       //add selected style to first chosen date
@@ -125,6 +126,7 @@ class App extends React.Component {
       });
     }
 
+    //CHECKOUT STAGE *********************************************************
     //if we are in checkout stage when selecting...
     if (this.state.bookStage === 'checkout') {
 
@@ -165,11 +167,10 @@ class App extends React.Component {
         checkOut: selectedDay + ' ' + monthYear,
         bookStage: 'invoice'
       })
-
-      //TODO must write logic to clear calendar when user wants to reselect dates
-      //TODO pull up invoice for remaining availableDates after selection
     }
 
+    //TODO must write logic to clear calendar when user wants to reselect dates
+    //TODO pull up invoice for remaining availableDates after selection
   }
 
   componentDidMount() {
