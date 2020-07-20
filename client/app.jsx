@@ -80,19 +80,20 @@ class App extends React.Component {
 
 
   //deals with selecting dates and storing them in state
-  selectDate(e, monthYear) {
+  selectDate(e) {
     //format selected element data for checking
+    let monthYear = e.target.id.slice(3)
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
     let stay = [];
     
     //if we're in check-in stage...
     if (this.state.bookStage === 'check-in') {
+      //add selected style to first chosen date
       let el = document.getElementById(e.target.id);
       el.classList.add('selected')
 
       //we filter out all dates that are not possible as checkout dates
-
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
@@ -100,7 +101,6 @@ class App extends React.Component {
         } else {
           break
         } 
-
         selectedDay++
 
         //logic dealing with turnover from one month or year to the next
@@ -112,7 +112,6 @@ class App extends React.Component {
             yearIndex++
             nextMonthIndex = 0
           }
-
           let details = new Date(yearIndex, nextMonthIndex).toString().split(' ');
           monthYear = details[1] + ' ' + details[3];
         }
@@ -130,7 +129,6 @@ class App extends React.Component {
     if (this.state.bookStage === 'checkout') {
 
       //filter out all dates except the ones containing your stay
-
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
@@ -142,7 +140,6 @@ class App extends React.Component {
         } else {
           break
         }
-
         selectedDay--
 
         //logic dealing with turnover from one month/year to the previous
