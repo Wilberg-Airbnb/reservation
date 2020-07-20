@@ -84,6 +84,7 @@ class App extends React.Component {
     //format selected element data for checking
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
+    let stay = [];
     
     //if we're in check-in stage...
     if (this.state.bookStage === 'check-in') {
@@ -91,12 +92,11 @@ class App extends React.Component {
       el.classList.add('selected')
 
       //we filter out all dates that are not possible as checkout dates
-      let checkoutDates = [];
 
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
-          checkoutDates.push(filtered[0])
+          stay.push(filtered[0])
         } else {
           break
         } 
@@ -120,7 +120,7 @@ class App extends React.Component {
 
       //set availableDates to only the selected day and available checkout dates, checkin to selection and bookStage to checkout
       this.setState({
-        availableDates: checkoutDates,
+        availableDates: stay,
         checkIn: selectedDay + ' ' + monthYear,
         bookStage: 'checkout'
       });
@@ -130,7 +130,6 @@ class App extends React.Component {
     if (this.state.bookStage === 'checkout') {
 
       //filter out all dates except the ones containing your stay
-      let stay = [];
 
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
