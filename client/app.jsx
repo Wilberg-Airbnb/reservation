@@ -80,18 +80,22 @@ class App extends React.Component {
   //deals with selecting dates and storing them in state
   selectDate(e, monthYear) {
 
+    
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
 
+    console.log(e.target.id)
+    console.log(e.target.innerHTML + ' ' + monthYear)
+    
     if (this.state.bookStage === 'check-in') {
+      let el = document.getElementById(e.target.id);
+      el.classList.add('selected')
       this.setState({
         checkIn: selectedDay + ' ' + monthYear,
         bookStage: 'checkout'
       })
 
       let checkoutDates = [];
-      
-      console.log(dateString(selectedDay + ' ' + monthYear))
 
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
@@ -129,8 +133,14 @@ class App extends React.Component {
       let stay = [];
 
       while (true) {
+
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
+        
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
+          let padDay = _.padStart(selectedDay, 2, '0')
+          let el = document.getElementById(padDay + ' ' + monthYear);
+          el.classList.add('selected')
+          console.log(el)
           stay.push(filtered[0])
         } else {
           break
