@@ -81,6 +81,8 @@ class App extends React.Component {
   selectDate(e, monthYear) {
 
     let selectedDay = parseInt(e.target.innerHTML);
+    let allAvailable = this.state.availableDates.map(x => dateString(x.date));
+
     if (this.state.bookStage === 'check-in') {
       this.setState({
         checkIn: selectedDay + ' ' + monthYear,
@@ -88,34 +90,75 @@ class App extends React.Component {
       })
 
       let checkoutDates = [];
-      let allAvailable = this.state.availableDates.map(x => dateString(x.date));
       
       console.log(dateString(selectedDay + ' ' + monthYear))
 
       while (true) {
-        console.log(selectedDay)
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
-        console.log(filtered)
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
           checkoutDates.push(filtered[0])
         } else {
           break
-        }
+        } 
+
         selectedDay++
+
+        if (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
+          selectedDay = 1
+          let nextMonthIndex = new Date(monthYear).getMonth() + 1
+          let yearIndex = new Date(monthYear).getFullYear();
+          if (nextMonthIndex > 11) {
+            yearIndex++
+            nextMonthIndex = 0
+          }
+
+          let details = new Date(yearIndex, nextMonthIndex).toString().split(' ');
+          monthYear = details[1] + ' ' + details[3];
+        }
       }
-
-      console.log(checkoutDates)
-
-
 
       this.setState({availableDates: checkoutDates});
     }
+
     if (this.state.bookStage === 'checkout') {
       this.setState({
         checkOut: selectedDay + ' ' + monthYear,
         bookStage: 'check-in'
       })
+
+      let stay = [];
+
+      while (true) {
+        let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
+        if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
+          stay.push(filtered[0])
+        } else {
+          break
+        }
+
+        selectedDay--
+
+        if (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
+          selectedDay = 31
+          let nextMonthIndex = new Date(monthYear).getMonth() - 1
+          let yearIndex = new Date(monthYear).getFullYear();
+          if (nextMonthIndex < 0) {
+            yearIndex--
+            nextMonthIndex = 11
+          }
+
+          let details = new Date(yearIndex, nextMonthIndex).toString().split(' ');
+          monthYear = details[1] + ' ' + details[3];
+
+          while (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
+            selectedDay--
+          }
+        }
+      }
+
+      this.setState({availableDates: stay})
     }
+
   }
 
   componentDidMount() {

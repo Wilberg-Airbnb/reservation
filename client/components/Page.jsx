@@ -93,7 +93,6 @@ const Page = ({ monthDays, monthName, monthData, selectDate }) => {
         {paddedMonthDays.map((x, index) => {
 
           let available = monthData.map(d => d.date.slice(8, 10))
-          console.log('available on Page', available)
           if (available.indexOf(x.split(' ')[1]) !== -1) {
             return <Day isAvailable={true} key={index} onClick={(e) => {selectDate(e, monthName)}}>{x.split(' ')[1]}</Day>
           } else {
