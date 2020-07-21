@@ -53,7 +53,7 @@ const Widget = ({ listingData }) => {
             </CalPick>
             <p>GUESTS</p>
           </BookPick>
-          <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Check availability</CheckButton>
+          <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Reserve</CheckButton>
           <ChargedText>You Won't be charged yet</ChargedText>
           <div>
             <SpanLeft>{`$${listingData.currentPrice} x ${listingData.availableDates.length - 1} nights`}</SpanLeft>
