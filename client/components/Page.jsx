@@ -14,7 +14,6 @@ const createPad = (day) => {
 const Month = styled.div`
   height: 370px;
   width: 323px;
-  border: 1px solid black;
   display: inline-block;
   vertical-align: top;
 `
