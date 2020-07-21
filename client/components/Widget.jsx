@@ -7,70 +7,49 @@ const formatCalInput = (bookDate) => {
 }
 
 const Widget = ({ listingData }) => {
-  if (!listingData.invoice) {
-    return (
-      <Container>
-        <Content>
-          <WidgetHead id="widget-heading">
-            <p id="night-price">${listingData.currentPrice} / night</p>
-            <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
-          </WidgetHead>
-          <BookPick id="calendar-picker">
-            <CalPick>
-              <DatePick>
-                <CheckTitle>Check-In</CheckTitle>
-                {formatCalInput(listingData.checkIn)}
-              </DatePick>
-              <DatePick>
-                <CheckTitle>Checkout</CheckTitle>
-                {formatCalInput(listingData.checkOut)}
-              </DatePick>
-            </CalPick>
-            <p>GUESTS</p>
-          </BookPick>
-          <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Check availability</CheckButton>
-        </Content>
-      </Container>
-    )
-  } else {
-    return (
-      <Container>
-        <Content>
-          <WidgetHead id="widget-heading">
-            <p id="night-price">${listingData.currentPrice} / night</p>
-            <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
-          </WidgetHead>
-          <BookPick id="calendar-picker">
-            <CalPick>
-              <DatePick>
-                <CheckTitle>Check-In</CheckTitle>
-                {formatCalInput(listingData.checkIn)}
-              </DatePick>
-              <DatePick>
-                <CheckTitle>Checkout</CheckTitle>
-                {formatCalInput(listingData.checkOut)}
-              </DatePick>
-            </CalPick>
-            <p>GUESTS</p>
-          </BookPick>
-          <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Reserve</CheckButton>
-          <ChargedText>You Won't be charged yet</ChargedText>
+  return (
+    <Container>
+      <Content>
+        <WidgetHead id="widget-heading">
+          <p id="night-price">${listingData.currentPrice} / night</p>
+          <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
+        </WidgetHead>
+        <BookPick id="calendar-picker">
+          <CalPick>
+            <DatePick>
+              <CheckTitle>Check-In</CheckTitle>
+              {formatCalInput(listingData.checkIn)}
+            </DatePick>
+            <DatePick>
+              <CheckTitle>Checkout</CheckTitle>
+              {formatCalInput(listingData.checkOut)}
+            </DatePick>
+          </CalPick>
+          <p>GUESTS</p>
+        </BookPick>
+        <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
+        {!listingData.invoice ?
+          null
+          :
           <div>
-            <SpanLeft>{`$${listingData.currentPrice} x ${listingData.availableDates.length - 1} nights`}</SpanLeft>
-            <SpanRight>{`$${listingData.currentPrice * (listingData.availableDates.length - 1)}`}</SpanRight>
+            <ChargedText>You Won't be charged yet</ChargedText>
+            <div>
+              <SpanLeft>{`$${listingData.currentPrice} x ${listingData.availableDates.length - 1} nights`}</SpanLeft>
+              <SpanRight>{`$${listingData.currentPrice * (listingData.availableDates.length - 1)}`}</SpanRight>
+            </div>
+            <div>
+              <SpanLeft>Cleaning Fee</SpanLeft>
+              <SpanRight>${listingData.cleaningFee}/night</SpanRight>
+            </div>
+            <div>
+              <SpanLeft>Service Fee</SpanLeft>
+              <SpanRight>{`$${Math.ceil((listingData.currentPrice * (listingData.availableDates.length - 1)) * .142)}`}</SpanRight>
+            </div>
           </div>
-          <div>
-            <SpanLeft>Cleaning Fee</SpanLeft>
-            <SpanRight>${listingData.cleaningFee}/night</SpanRight>
-          </div>
-          <div>
-            <SpanLeft>Service Fee</SpanLeft>
-            <SpanRight>{`$${Math.ceil((listingData.currentPrice * (listingData.availableDates.length - 1)) * .142)}`}</SpanRight>
-          </div>
-        </Content>
-      </Container>
-    )
-  }
+        }
+      </Content>
+    </Container>
+  )
 }
 
 const Container = styled.div`
