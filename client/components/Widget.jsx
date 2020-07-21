@@ -6,23 +6,41 @@ const formatCalInput = (bookDate) => {
   return new Date(bookDate).toISOString().slice(0, 10);
 }
 
-const Widget = ({listingData}) => {
+const Widget = ({ listingData }) => {
   return (
     <Container>
       <Content>
         <WidgetHead id="widget-heading">
-          <p id="night-price">${listingData.standardPrice} / night</p>
+          <p id="night-price">${listingData.currentPrice} / night</p>
           <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
         </WidgetHead>
         <BookPick id="calendar-picker">
           <CalPick>
-            <input type="date" id="datemin" name="datemin" defaultValue={formatCalInput(listingData.checkIn)}></input>
-            <input type="date" id="datemax" name="datemax" defaultValue={formatCalInput(listingData.checkOut)}></input>
+            <DatePick>
+              <CheckTitle>Check-In</CheckTitle>
+              {formatCalInput(listingData.checkIn)}
+            </DatePick>
+            <DatePick>
+              <CheckTitle>Checkout</CheckTitle>
+              {formatCalInput(listingData.checkOut)}
+            </DatePick>
           </CalPick>
           <p>GUESTS</p>
         </BookPick>
-
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>Check availability</CheckButton>
+        <ChargedText>You Won't be charged yet</ChargedText>
+        <div>
+          <SpanLeft>{`$${listingData.currentPrice} x ${listingData.availableDates.length - 1} nights`}</SpanLeft>
+          <SpanRight>{`$${listingData.currentPrice * (listingData.availableDates.length - 1)}`}</SpanRight>
+        </div>
+        <div>
+          <SpanLeft>Cleaning Fee</SpanLeft>
+          <SpanRight>${listingData.cleaningFee}/night</SpanRight>
+        </div>
+        <div>
+          <SpanLeft>Service Fee</SpanLeft>
+          <SpanRight>{`$${Math.ceil((listingData.currentPrice * (listingData.availableDates.length - 1)) * .142)}`}</SpanRight>
+        </div>
       </Content>
     </Container>
   )
@@ -73,16 +91,50 @@ const CalPick = styled.div`
   display: flex;
 `
 
-const CheckButton = styled.button`
+const DatePick = styled.div`
+  width: 160px;
+  height: 56px;
+  overflow: hidden;
+  cursor: pointer;
   display: block;
-  margin: auto;
-  margin-top: 20px;
-  width: 298px;
-  height: 48px;
-  background: radial-gradient(#F83158, #D80866);
-  color: rgb(255, 255, 255);
-  border: 2px solid rgba(221, 221, 221, 0.12);
-  border-radius: 12px;
+  vertical-align: text-top;
+  font-size: 14px
+`
+
+const CheckTitle = styled.h6`
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+`
+
+const CheckButton = styled.button`
+display: block;
+margin: auto;
+margin-top: 20px;
+width: 298px;
+height: 48px;
+background: radial-gradient(#F83158, #D80866);
+color: rgb(255, 255, 255);
+border: 2px solid rgba(221, 221, 221, 0.12);
+border-radius: 12px;
+`
+
+const ChargedText = styled.p`
+  font-size: 12px;
+  text-align: center;
+`
+
+const SpanLeft = styled.span`
+  text-align: left;
+  font-size: 13px;
+  padding-left: 20px;
+`
+
+const SpanRight = styled.span`
+  text-align: right;
+  font-size: 13px;
+  padding-right: 20px;
+  float: right;
 `
 
 export default Widget
