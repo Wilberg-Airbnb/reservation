@@ -27,7 +27,8 @@ class App extends React.Component {
       bookStage: 'check-in',
       checkIn: '',
       checkOut: '',
-      currentPrice: null
+      currentPrice: null,
+      invoice: false
     }
 
     this.selectDate = this.selectDate.bind(this);
@@ -168,7 +169,8 @@ class App extends React.Component {
         availableDates: stay,
         checkOut: selectedDay + ' ' + monthYear,
         currentPrice: this.state.availableDates[0].fee,
-        bookStage: 'invoice'
+        bookStage: 'invoice',
+        invoice: true
       })
     }
 

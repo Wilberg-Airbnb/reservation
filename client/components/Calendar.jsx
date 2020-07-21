@@ -5,6 +5,7 @@ import Page from './Page.jsx';
 const Section = styled.section`
   height: 454.53px;
   width: 653.33px;
+  font-family: Poppins;
 `
 
 const Head = styled.div`
@@ -33,6 +34,7 @@ const Roll = styled.div`
 const HeadTitle = styled.h2`
   margin: 1px 0px;
   vertical-align: top;
+  font-weight: 400;
 `
 
 const HeadSubtitle = styled.p`

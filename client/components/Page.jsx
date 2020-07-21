@@ -26,6 +26,7 @@ const MonthHeader = styled.section`
 
 const MonthName = styled.h6`
   font-size: 1em;
+  font-weight: 300;
 `
 
 const Week = styled.div`
@@ -38,9 +39,11 @@ const DayWeek = styled.div`
   width: 43.5px;
   display: inline-block;
   vertical-align: middle;
-  text-align: center;
+  text-align: left;
   border-radius: 100px;
   padding-top: 5px;
+  font-weight: 200;
+  color: grey;
 `
 
 const Day = styled.div`
@@ -69,6 +72,8 @@ const Day = styled.div`
 
 const DayPicker = styled.section`
   width: 100%;
+  text-align: left;
+  padding-top: 10px;
 `
 
 const Page = ({ monthDays, monthName, monthData, selectDate }) => {
