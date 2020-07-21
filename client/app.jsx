@@ -26,7 +26,8 @@ class App extends React.Component {
       allDates: {},
       bookStage: 'check-in',
       checkIn: '',
-      checkOut: ''
+      checkOut: '',
+      currentPrice: null
     }
 
     this.selectDate = this.selectDate.bind(this);
@@ -48,7 +49,8 @@ class App extends React.Component {
           standardPrice: res.data.standardPrice,
           cleaningFee: res.data.cleaningFee,
           weeklyDiscount: res.data.weeklyDiscount,
-          refundable: res.data.refundable
+          refundable: res.data.refundable,
+          currentPrice: res.data.standardPrice
         })
       })
       .catch(err => {
@@ -165,6 +167,7 @@ class App extends React.Component {
       this.setState({
         availableDates: stay,
         checkOut: selectedDay + ' ' + monthYear,
+        currentPrice: this.state.availableDates[0].fee,
         bookStage: 'invoice'
       })
     }

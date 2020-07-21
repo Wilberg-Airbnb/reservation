@@ -22,18 +22,21 @@ const Month = styled.div`
 const MonthHeader = styled.section`
   height: 91px;
   width: 100%;
+  text-align: center;
+`
+
+const MonthName = styled.h6`
+  font-size: 1em;
 `
 
 const Week = styled.div`
   height: 32px;
   width: 100%;
-  border: 1px solid black;
 `
 
 const DayWeek = styled.div`
   height: 25px;
   width: 43.5px;
-  border 1px solid black;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -47,7 +50,6 @@ const Day = styled.div`
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  border-radius: 100px;
   padding-top: 5px;
   text-decoration: line-through;
   color: grey;
@@ -56,12 +58,13 @@ const Day = styled.div`
     text-decoration: none;
     color: black;
     &:hover {
-      border 1px solid black;
+      background: #F7F7F7;
+      cursor: pointer;
     }
   `}
 
   &.selected {
-    background: grey;
+    background: #F7F7F7;
   }
 `
 
@@ -79,7 +82,7 @@ const Page = ({ monthDays, monthName, monthData, selectDate }) => {
   return (
     <Month>
       <MonthHeader>
-        <h6>{monthName}</h6>
+        <MonthName>{monthName}</MonthName>
         <Week>
           <DayWeek>M</DayWeek>
           <DayWeek>T</DayWeek>
