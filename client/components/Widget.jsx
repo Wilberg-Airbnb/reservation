@@ -76,6 +76,7 @@ const BookPick = styled.div`
 const ButtonPick = styled.div`
   width: 288;
   margin: auto;
+  overflow: hidden;
 `
 
 const WidgetHead = styled.div`
@@ -89,6 +90,8 @@ const Rating = styled.div`
 
 const CalPick = styled.div`
   display: flex;
+  width: 100%;
+  border-radius: 12px
 `
 
 const DatePick = styled.div`
@@ -98,7 +101,8 @@ const DatePick = styled.div`
   cursor: pointer;
   display: block;
   vertical-align: text-top;
-  font-size: 14px
+  font-size: 14px;
+  border-bottom: 2px solid rgb(221, 221, 221);
 `
 
 const CheckTitle = styled.h6`
@@ -126,13 +130,13 @@ const ChargedText = styled.p`
 
 const SpanLeft = styled.span`
   text-align: left;
-  font-size: 13px;
+  font-size: 16px;
   padding-left: 20px;
 `
 
 const SpanRight = styled.span`
   text-align: right;
-  font-size: 13px;
+  font-size: 16px;
   padding-right: 20px;
   float: right;
 `

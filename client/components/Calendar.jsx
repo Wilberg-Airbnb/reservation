@@ -5,12 +5,12 @@ import Page from './Page.jsx';
 const Section = styled.section`
   height: 454.53px;
   width: 653.33px;
-  border: 1px solid black;
 `
 
 const Head = styled.div`
   height: 65.73px;
   width: 653.33px;
+  padding: 5px;
 `
 
 const Window = styled.div`
@@ -25,10 +25,18 @@ const Roll = styled.div`
   width: 5000px !important;
   transform: translateX(0px);
   position: absolute !important;
-  border: 1px solid black;
   display: block;
   position: absolute;
   z-index: 0 !important;
+`
+
+const HeadTitle = styled.h2`
+  margin: 1px 0px;
+  vertical-align: top;
+`
+
+const HeadSubtitle = styled.p`
+  margin-top: 0px;
 `
 
 //function to help pull available for each month that we create a Page for
@@ -52,8 +60,8 @@ const Calendar = ({ listingData, selectDate }) => {
   return (
     <Section>
       <Head>
-        <h2>Select check-in date</h2>
-        <p>Add your travel dates for exact pricing</p>
+        <HeadTitle>Select check-in date</HeadTitle>
+        <HeadSubtitle>Add your travel dates for exact pricing</HeadSubtitle>
       </Head>
       <Window>
         <Roll>
