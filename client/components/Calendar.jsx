@@ -93,8 +93,11 @@ const ClearDates = styled.p`
 //function to help pull available for each month that we create a Page for
 const getMonthData = (monthName, data) => {
   let datesForMonth = data.filter(date => {
-    let details = new Date(date.date).toString().split(' ');
+    //TODO check to make sure this works in evening
+    let details = new Date(date.date + ' 12:00:00').toString().split(' ');
     let currentMonthName = details[1] + ' ' + details[3]
+    console.log(date.date)
+    console.log(currentMonthName)
     return monthName === currentMonthName;
   })
 
