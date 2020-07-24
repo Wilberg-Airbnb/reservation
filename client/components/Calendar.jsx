@@ -97,7 +97,7 @@ const getMonthData = (monthName, data) => {
   return datesForMonth;
 }
 
-const Calendar = ({ listingData, selectDate, page, nextPage, prevPage }) => {
+const Calendar = ({ listingData, selectDate, page, nextPage, prevPage, clearDates }) => {
 
 
   //Calendar has Header and a window containing the pages
@@ -119,7 +119,7 @@ const Calendar = ({ listingData, selectDate, page, nextPage, prevPage }) => {
           })}
         </Roll>
       </Window>
-      <ClearDates>Clear Dates</ClearDates>
+      <ClearDates onClick={() => clearDates()}>Clear Dates</ClearDates>
     </Section>
   )
 }
