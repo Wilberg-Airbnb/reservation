@@ -96,8 +96,9 @@ const getMonthData = (monthName, data) => {
     //TODO check to make sure this works in evening
     let details = new Date(date.date + ' 12:00:00').toString().split(' ');
     let currentMonthName = details[1] + ' ' + details[3]
-    console.log(date.date)
-    console.log(currentMonthName)
+    //TODO REMOVE LOGS
+    // console.log(date.date)
+    // console.log(currentMonthName)
     return monthName === currentMonthName;
   })
 
