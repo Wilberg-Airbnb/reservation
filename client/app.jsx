@@ -77,12 +77,12 @@ class App extends React.Component {
       let details = date.split(' ');
       let monthYear = `${details[1]} ${details[3]}`;
       let dayDate = `${details[0]} ${details[2]}`;
-      renderedDates[monthYear] 
-      ? renderedDates[monthYear].push(dayDate) 
-      : renderedDates[monthYear] = [dayDate];
+      renderedDates[monthYear]
+        ? renderedDates[monthYear].push(dayDate)
+        : renderedDates[monthYear] = [dayDate];
     })
 
-    this.setState({allDates: renderedDates});
+    this.setState({ allDates: renderedDates });
   }
 
 
@@ -108,7 +108,7 @@ class App extends React.Component {
           stay.push(filtered[0])
         } else {
           break
-        } 
+        }
         selectedDay++
 
         //logic dealing with turnover from one month or year to the next
@@ -196,7 +196,23 @@ class App extends React.Component {
   }
 
   clearDates() {
+
+    //get original availableDates
     this.getData()
+
+    //remove selected class from all selected dates
+    let allSelected = document.querySelectorAll(".selected");
+    for (var i = 0; i < allSelected.length; i++) {
+      allSelected[i].classList.remove("selected");
+    }
+
+    //set invoice back to false and back to checkin mode
+    this.setState({
+      bookStage: 'check-in',
+      checkIn: '',
+      checkOut: '',
+      invoice: false
+    })
   }
 
   componentDidMount() {
@@ -211,7 +227,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates}/>
+        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );
   }
