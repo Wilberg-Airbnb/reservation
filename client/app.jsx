@@ -28,10 +28,13 @@ class App extends React.Component {
       checkIn: '',
       checkOut: '',
       currentPrice: null,
-      invoice: false
+      invoice: false,
+      calendarPage: 0
     }
 
     this.selectDate = this.selectDate.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -175,7 +178,20 @@ class App extends React.Component {
     }
 
     //TODO must write logic to clear calendar when user wants to reselect dates
-    //TODO pull up invoice for remaining availableDates after selection
+  }
+
+  nextPage() {
+    let currentPage = this.state.calendarPage;
+    this.setState({
+      calendarPage: currentPage + 323
+    })
+  }
+
+  prevPage() {
+    let currentPage = this.state.calendarPage;
+    this.setState({
+      calendarPage: currentPage - 323
+    })
   }
 
   componentDidMount() {
@@ -190,7 +206,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state} selectDate={this.selectDate}/>
+        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage}/>
       </div>
     );
   }
