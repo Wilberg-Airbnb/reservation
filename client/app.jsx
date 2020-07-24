@@ -6,6 +6,9 @@ import lodash from 'lodash';
 import Calendar from './components/Calendar.jsx'
 
 const dateString = (info) => {
+  info = info.split('T')[0]
+  console.log('in', info)
+  console.log('out', new Date(info).toISOString().slice(0, -14));
   return new Date(info).toISOString().slice(0, -14);
 }
 
@@ -48,6 +51,9 @@ class App extends React.Component {
         console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts
         let sortedDates = _.sortBy(res.data.availableDates, ["date"]);
+        sortedDates = sortedDates.map(x => {
+          return {date: x.date.split('T')[0], fee: x.fee}
+        })
 
         this.setState({
           availableDates: sortedDates,
@@ -89,7 +95,6 @@ class App extends React.Component {
   //deals with selecting dates and storing them in state
   selectDate(e) {
     //format selected element data for checking
-    console.log(e.target.id)
 
     let monthYear = e.target.id.slice(3)
     let selectedDay = parseInt(e.target.innerHTML);
@@ -105,9 +110,11 @@ class App extends React.Component {
 
       //we filter out all dates that are not possible as checkout dates
       while (true) {
-        let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
+        let filtered = this.state.availableDates.filter(y => {
+          y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear)
+        })
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
-          console.log(filtered)
+          // console.log(allAvailable)
           stay.push(filtered[0])
         } else {
           break
