@@ -35,6 +35,7 @@ class App extends React.Component {
     this.selectDate = this.selectDate.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
+    this.clearDates = this.clearDates.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -194,6 +195,10 @@ class App extends React.Component {
     })
   }
 
+  clearDates() {
+    this.getData()
+  }
+
   componentDidMount() {
     //makes call to get data for listing
     this.generateDates();
@@ -206,7 +211,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} />
-        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage}/>
+        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates}/>
       </div>
     );
   }
