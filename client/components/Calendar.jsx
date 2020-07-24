@@ -82,8 +82,12 @@ const ScrollRight = styled.div`
 
 const ClearDates = styled.p`
   font-size: 14px;
+  font-weight: 500;
   text-decoration: underline;
   float: right;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 //function to help pull available for each month that we create a Page for
