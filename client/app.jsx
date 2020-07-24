@@ -89,6 +89,8 @@ class App extends React.Component {
   //deals with selecting dates and storing them in state
   selectDate(e) {
     //format selected element data for checking
+    console.log(e.target.id)
+
     let monthYear = e.target.id.slice(3)
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
@@ -105,6 +107,7 @@ class App extends React.Component {
       while (true) {
         let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
+          console.log(filtered)
           stay.push(filtered[0])
         } else {
           break
@@ -128,7 +131,7 @@ class App extends React.Component {
       //set availableDates to only the selected day and available checkout dates, checkin to selection and bookStage to checkout
       this.setState({
         availableDates: stay,
-        checkIn: selectedDay + ' ' + monthYear,
+        checkIn: e.target.id,
         bookStage: 'checkout'
       });
     }
@@ -171,7 +174,7 @@ class App extends React.Component {
       //set state to stay, checkout to selected end date and bookStage to final invoice
       this.setState({
         availableDates: stay,
-        checkOut: selectedDay + ' ' + monthYear,
+        checkOut: e.target.id,
         currentPrice: this.state.availableDates[0].fee,
         bookStage: 'invoice',
         invoice: true
