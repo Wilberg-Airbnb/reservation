@@ -188,8 +188,6 @@ class App extends React.Component {
         invoice: true
       })
     }
-
-    //TODO must write logic to clear calendar when user wants to reselect dates
   }
 
   nextPage() {
