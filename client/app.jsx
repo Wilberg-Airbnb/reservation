@@ -7,8 +7,9 @@ import Calendar from './components/Calendar.jsx'
 
 const dateString = (info) => {
   info = info.split('T')[0]
-  console.log('in', info)
-  console.log('out', new Date(info).toISOString().slice(0, -14));
+  //TODO remove logs!
+  // console.log('in', info)
+  // console.log('out', new Date(info).toISOString().slice(0, -14));
   return new Date(info).toISOString().slice(0, -14);
 }
 
@@ -95,24 +96,24 @@ class App extends React.Component {
   //deals with selecting dates and storing them in state
   selectDate(e) {
     //format selected element data for checking
-
     let monthYear = e.target.id.slice(3)
     let selectedDay = parseInt(e.target.innerHTML);
     let allAvailable = this.state.availableDates.map(x => dateString(x.date));
     let stay = [];
-
+    
     //CHECK-IN STAGE *********************************************************
     //if we're in check-in stage...
     if (this.state.bookStage === 'check-in') {
       //add selected style to first chosen date
       let el = document.getElementById(e.target.id);
       el.classList.add('selected')
-
+      
       //we filter out all dates that are not possible as checkout dates
       while (true) {
         let filtered = this.state.availableDates.filter(y => {
-          y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear)
+          return y.date === dateString(selectedDay + ' ' + monthYear)
         })
+        console.log(stay)
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
           // console.log(allAvailable)
           stay.push(filtered[0])
@@ -120,7 +121,6 @@ class App extends React.Component {
           break
         }
         selectedDay++
-
         //logic dealing with turnover from one month or year to the next
         if (new Date(selectedDay + ' ' + monthYear).toString() === 'Invalid Date') {
           selectedDay = 1
@@ -134,7 +134,7 @@ class App extends React.Component {
           monthYear = details[1] + ' ' + details[3];
         }
       }
-
+      
       //set availableDates to only the selected day and available checkout dates, checkin to selection and bookStage to checkout
       this.setState({
         availableDates: stay,
@@ -149,7 +149,7 @@ class App extends React.Component {
 
       //filter out all dates except the ones containing your stay
       while (true) {
-        let filtered = this.state.availableDates.filter(y => y.date.slice(0, -14) === dateString(selectedDay + ' ' + monthYear))
+        let filtered = this.state.availableDates.filter(y => y.date === dateString(selectedDay + ' ' + monthYear))
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
           //add selected class to dates and push to stay
           let padDay = _.padStart(selectedDay, 2, '0')
