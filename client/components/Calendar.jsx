@@ -24,11 +24,11 @@ const Window = styled.div`
 const Roll = styled.div`
   height: 370px !important;
   width: 5000px !important;
-  transform: translateX(0px);
   position: absolute !important;
   display: block;
   position: absolute;
   z-index: 0 !important;
+  transform: ${props => `translate(-${props.page}px, 0px)`};
 `
 
 const HeadTitle = styled.h2`
@@ -41,6 +41,45 @@ const HeadSubtitle = styled.p`
   margin-top: 0px;
 `
 
+const ScrollLeft = styled.div`
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  float: left;
+  transform: translate(50px, 30px);
+  text-align: center;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 1;
+  &:hover {
+    background: #F7F7F7;
+    cursor: pointer;
+  }
+  ${({page}) => page <= 0 && `
+    pointer-events: none;
+    color: white;
+  `}
+`
+
+const ScrollRight = styled.div`
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 50px;
+  font-size: 18px;
+  position: absolute;
+  transform: translate(575px, 30px);
+  z-index: 5;
+  &:hover {
+    background: #F7F7F7;
+    cursor: pointer;
+  }
+  ${({page}) => page >= 3230 && `
+    pointer-events: none;
+    color: white;
+  `}
+`;
+
 //function to help pull available for each month that we create a Page for
 const getMonthData = (monthName, data) => {
   let datesForMonth = data.filter(date => {
@@ -52,7 +91,7 @@ const getMonthData = (monthName, data) => {
   return datesForMonth;
 }
 
-const Calendar = ({ listingData, selectDate }) => {
+const Calendar = ({ listingData, selectDate, page, nextPage, prevPage }) => {
 
 
   //Calendar has Header and a window containing the pages
@@ -66,9 +105,11 @@ const Calendar = ({ listingData, selectDate }) => {
         <HeadSubtitle>Add your travel dates for exact pricing</HeadSubtitle>
       </Head>
       <Window>
-        <Roll>
+        <ScrollLeft onClick={(e) => prevPage(e)} page={page}>{'<'}</ScrollLeft>
+        <ScrollRight onClick={(e) => nextPage(e)} page={page}>{'>'}</ScrollRight>
+        <Roll page={page}>
           {Object.keys(listingData.allDates).map((month, index) => {
-            return <Page monthDays={listingData.allDates[month]} monthName={month} monthData={getMonthData(month, listingData.availableDates)} selectDate={selectDate} key={index}/>
+            return <Page monthDays={listingData.allDates[month]} monthName={month} monthData={getMonthData(month, listingData.availableDates)} selectDate={selectDate} key={index} />
           })}
         </Roll>
       </Window>
