@@ -154,6 +154,7 @@ class App extends React.Component {
           //add selected class to dates and push to stay
           let padDay = _.padStart(selectedDay, 2, '0')
           let el = document.getElementById(padDay + ' ' + monthYear);
+          if (el === null) { break }
           el.classList.add('selected')
           stay.push(filtered[0])
         } else {
