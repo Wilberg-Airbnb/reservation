@@ -55,7 +55,7 @@ const ScrollLeft = styled.div`
     background: #F7F7F7;
     cursor: pointer;
   }
-  ${({page}) => page <= 0 && `
+  ${({ page }) => page <= 0 && `
     pointer-events: none;
     color: white;
   `}
@@ -74,11 +74,17 @@ const ScrollRight = styled.div`
     background: #F7F7F7;
     cursor: pointer;
   }
-  ${({page}) => page >= 3230 && `
+  ${({ page }) => page >= 3230 && `
     pointer-events: none;
     color: white;
   `}
 `;
+
+const ClearDates = styled.p`
+  font-size: 14px;
+  text-decoration: underline;
+  float: right;
+`
 
 //function to help pull available for each month that we create a Page for
 const getMonthData = (monthName, data) => {
@@ -113,6 +119,7 @@ const Calendar = ({ listingData, selectDate, page, nextPage, prevPage }) => {
           })}
         </Roll>
       </Window>
+      <ClearDates>Clear Dates</ClearDates>
     </Section>
   )
 }
