@@ -208,7 +208,9 @@ const CalendarWrapper = styled.div`
   height: fit-content;
   width: fit-content;
   background: #FFFFFF;
-  border: 1px solid black;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
   position: absolute;
   z-index: 10;
   transform: translate(-380px, -66px);
