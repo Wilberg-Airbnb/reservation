@@ -14,10 +14,22 @@ const GuestContainer = styled.div`
   padding: 16px;
 `
 
-function GuestPicker() {
+const GuestCategory = styled.p`
+  font-size: 14px,
+`
+
+const GuestPicker = (props) => {
   return (
     <GuestContainer>
-
+      <div>
+        <GuestCategory>Adults</GuestCategory>
+      </div>
+      <div>
+        <GuestCategory>Children</GuestCategory>
+      </div>
+      <div>
+        <GuestCategory>Infants</GuestCategory>
+      </div>
     </GuestContainer>
   )
 }
