@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import GuestPicker from './GuestPicker.jsx';
 
 const formatCalInput = (bookDate) => {
   if (bookDate === "") { return "" }
@@ -27,6 +28,7 @@ const Widget = ({ listingData }) => {
           </CalPick>
           <p>GUESTS</p>
         </BookPick>
+        <GuestPicker/>
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
         {!listingData.invoice ?
           null
