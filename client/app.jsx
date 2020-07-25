@@ -45,6 +45,7 @@ class App extends React.Component {
     this.prevPage = this.prevPage.bind(this);
     this.clearDates = this.clearDates.bind(this);
     this.openGuests = this.openGuests.bind(this);
+    this.handleGuests = this.handleGuests.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -233,6 +234,19 @@ class App extends React.Component {
     this.setState({guestOpen: !this.state.guestOpen})
   }
 
+  handleGuests(name, isAdding) {
+    // const name = target.name;
+    console.log(name)
+    var value = this.state[name];
+    if(isAdding) {
+      value++
+      this.setState({[name]: value});
+    } else {
+      value > 0 ? value-- : value;
+      this.setState({[name]: value});
+    }
+  }
+
   componentDidMount() {
     //makes call to get data for listing
     this.generateDates();
@@ -244,7 +258,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Widget listingData={this.state} openGuests={this.openGuests}/>
+        <Widget listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests}/>
         <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );

@@ -66,32 +66,32 @@ const GuestClose = styled.p`
   cursor: pointer;
 `
 
-const GuestPicker = ({ openGuests }) => {
+const GuestPicker = ({ openGuests, handleGuests, listingData }) => {
   return (
     <GuestContainer>
       <GuestSpanLeft>
         Adults
       </GuestSpanLeft>
       <GuestSpanRight>
-        <GuestSelectLeft><GuestFont>-</GuestFont></GuestSelectLeft>
-        5
-        <GuestSelectRight><GuestFont>+</GuestFont></GuestSelectRight>
+        <GuestSelectLeft onClick={(e) => handleGuests('adults', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
+        {listingData.adults}
+        <GuestSelectRight onClick={(e) => handleGuests('adults', true)}><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
       <GuestSpanLeft>
-        Adults
+        Children
       </GuestSpanLeft>
       <GuestSpanRight>
-        <GuestSelectLeft><GuestFont>-</GuestFont></GuestSelectLeft>
-        2
-        <GuestSelectRight><GuestFont>+</GuestFont></GuestSelectRight>
+        <GuestSelectLeft onClick={(e) => handleGuests('children', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
+        {listingData.children}
+        <GuestSelectRight onClick={(e) => handleGuests('children', true)}><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
       <GuestSpanLeft>
         Infants
       </GuestSpanLeft>
       <GuestSpanRight>
-        <GuestSelectLeft><GuestFont>-</GuestFont></GuestSelectLeft>
-        1
-        <GuestSelectRight><GuestFont>+</GuestFont></GuestSelectRight>
+        <GuestSelectLeft onClick={(e) => handleGuests('infants', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
+        {listingData.infants}
+        <GuestSelectRight onClick={(e) => handleGuests('infants', true)}><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
       <GuestClose onClick={() => openGuests()}>Close</GuestClose>
     </GuestContainer>
