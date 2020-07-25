@@ -26,9 +26,12 @@ const Widget = ({ listingData }) => {
               {formatCalInput(listingData.checkOut)}
             </DatePick>
           </CalPick>
-          <p>GUESTS</p>
+          <div>
+            <Guests>GUESTS</Guests>
+            <GuestCount>3 guests, 2 infants</GuestCount>
+          </div>
         </BookPick>
-        <GuestPicker/>
+        <GuestPicker />
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
         {!listingData.invoice ?
           null
@@ -147,6 +150,20 @@ const SpanRight = styled.span`
   font-size: 16px;
   padding-right: 20px;
   float: right;
+`
+
+const Guests = styled.h4`
+  margin: 0px 1px;
+  padding-bottom: 2px;
+  font-size: 14px;
+  font-weight: 100px;
+  vertical-align: text-top;
+`
+
+const GuestCount = styled.p`
+  font-size: 16px;
+  font-weight: 100;
+  margin: 0px 1px;
 `
 
 export default Widget
