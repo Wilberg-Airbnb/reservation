@@ -37,7 +37,8 @@ class App extends React.Component {
       guestOpen: false,
       adults: 1,
       children: 0,
-      infants: 0
+      infants: 0,
+      calendarPopup: false
     }
 
     this.selectDate = this.selectDate.bind(this);
@@ -46,6 +47,7 @@ class App extends React.Component {
     this.clearDates = this.clearDates.bind(this);
     this.openGuests = this.openGuests.bind(this);
     this.handleGuests = this.handleGuests.bind(this);
+    this.openCalendar = this.openCalendar.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -248,6 +250,10 @@ class App extends React.Component {
     }
   }
 
+  openCalendar() {
+    this.setState({calendarPopup: !this.state.calendarPopup})
+  }
+
   componentDidMount() {
     //makes call to get data for listing
     this.generateDates();
@@ -259,7 +265,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Widget listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests}/>
+        <Widget listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} openCalendar={this.openCalendar}/>
         <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );
