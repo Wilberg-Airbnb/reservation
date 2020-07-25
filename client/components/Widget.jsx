@@ -7,7 +7,7 @@ const formatCalInput = (bookDate) => {
   return new Date(bookDate).toISOString().slice(0, 10);
 }
 
-const Widget = ({ listingData, openGuests }) => {
+const Widget = ({ listingData, openGuests, handleGuests }) => {
   return (
     <Container>
       <Content>
@@ -32,7 +32,7 @@ const Widget = ({ listingData, openGuests }) => {
             <GuestArrow onClick={() => openGuests()}>{listingData.guestOpen ? '^' : 'v'}</GuestArrow>
           </div>
         </BookPick>
-        {listingData.guestOpen ? <GuestPicker openGuests={openGuests}/> : null}
+        {listingData.guestOpen ? <GuestPicker listingData={listingData} openGuests={openGuests} handleGuests={handleGuests}/> : null}
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
         {!listingData.invoice ?
           null
