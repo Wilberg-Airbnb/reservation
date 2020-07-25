@@ -54,8 +54,8 @@ class App extends React.Component {
   getData() {
 
     var listingId = this.state.listingId
-
-    axios.get(`http://${window.location.host}/api/reservation/${listingId}`)
+    //local machine api call
+    axios.get(`http://3.19.16.18/api/reservation/${listingId}`)
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts
