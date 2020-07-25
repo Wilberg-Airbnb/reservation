@@ -25,8 +25,8 @@ const MonthHeader = styled.section`
 `
 
 const MonthName = styled.h6`
-  font-size: 1em;
-  font-weight: 300;
+  font-size: 16px !important;
+  font-weight: 300 !important;
 `
 
 const Week = styled.div`
@@ -44,6 +44,10 @@ const DayWeek = styled.div`
   padding-top: 5px;
   font-weight: 200;
   color: grey;
+  font-size: 14px !important;
+`
+const Paragraph = styled.p`
+  font-size: 14px !important;
 `
 
 const Day = styled.div`
@@ -55,6 +59,7 @@ const Day = styled.div`
   padding-top: 5px;
   text-decoration: line-through;
   color: grey;
+  font-size: 16px;
 
   ${({ isAvailable }) => isAvailable && `
     text-decoration: none;
@@ -105,7 +110,7 @@ const Page = ({ monthDays, monthName, monthData, selectDate }) => {
           let available = monthData.map(d => d.date.slice(8, 10))
           let dateId = x.slice(4) + ' ' + monthName
           if (available.indexOf(x.split(' ')[1]) !== -1) {
-            return <Day isAvailable={true} key={index} onClick={(e) => {selectDate(e)}} id={dateId}>{x.split(' ')[1]}</Day>
+            return <Day isAvailable={true} key={index} onClick={(e) => { selectDate(e) }} id={dateId}>{x.split(' ')[1]}</Day>
           } else {
             return <Day isAvailable={false} key={index} id={dateId}>{x.split(' ')[1]}</Day>
           }
