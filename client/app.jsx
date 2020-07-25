@@ -35,7 +35,7 @@ class App extends React.Component {
       invoice: false,
       calendarPage: 0,
       guestOpen: false,
-      adults: 0,
+      adults: 1,
       children: 0,
       infants: 0
     }
@@ -243,6 +243,7 @@ class App extends React.Component {
       this.setState({[name]: value});
     } else {
       value > 0 ? value-- : value;
+      name === 'adults' && value < 1 ? value++ : value;
       this.setState({[name]: value});
     }
   }

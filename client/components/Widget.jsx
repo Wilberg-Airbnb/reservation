@@ -28,11 +28,27 @@ const Widget = ({ listingData, openGuests, handleGuests }) => {
           </CalPick>
           <div>
             <Guests>GUESTS</Guests>
-            <GuestCount>3 guests, 2 infants</GuestCount>
+            <GuestCount>
+              {
+                listingData.adults > 1 || listingData.children > 0 ?
+                `${listingData.adults + listingData.children} guests`
+                : '1 guest'
+              }
+              {
+                listingData.infants === 1 ?
+                `, ${listingData.infants} infant`
+                : null
+              }
+              {
+                listingData.infants > 1 ?
+                `, ${listingData.infants} infants`
+                : null
+              }
+            </GuestCount>
             <GuestArrow onClick={() => openGuests()}>{listingData.guestOpen ? '^' : 'v'}</GuestArrow>
           </div>
         </BookPick>
-        {listingData.guestOpen ? <GuestPicker listingData={listingData} openGuests={openGuests} handleGuests={handleGuests}/> : null}
+        {listingData.guestOpen ? <GuestPicker listingData={listingData} openGuests={openGuests} handleGuests={handleGuests} /> : null}
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
         {!listingData.invoice ?
           null
