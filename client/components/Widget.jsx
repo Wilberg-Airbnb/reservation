@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import GuestPicker from './GuestPicker.jsx';
+import Calendar from './Calendar.jsx';
 
 const formatCalInput = (bookDate) => {
   if (bookDate === "") { return "" }
   return new Date(bookDate).toISOString().slice(0, 10);
 }
 
-const Widget = ({ listingData, openGuests, handleGuests }) => {
+const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextPage, prevPage, clearDates, openCalendar }) => {
   return (
     <Container>
       <Content>
@@ -16,7 +17,7 @@ const Widget = ({ listingData, openGuests, handleGuests }) => {
           <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
         </WidgetHead>
         <BookPick id="calendar-picker">
-          <CalPick>
+          <CalPick onClick={() => openCalendar()}>
             <DatePick>
               <CheckTitle>Check-In</CheckTitle>
               {formatCalInput(listingData.checkIn)}
@@ -26,23 +27,30 @@ const Widget = ({ listingData, openGuests, handleGuests }) => {
               {formatCalInput(listingData.checkOut)}
             </DatePick>
           </CalPick>
+          {
+            listingData.calendarPopup && listingData.bookStage !== 'invoice' ?
+              <CalendarWrapper>
+                <Calendar listingData={listingData} selectDate={selectDate} page={page} nextPage={nextPage} prevPage={prevPage} clearDates={clearDates} />
+              </CalendarWrapper>
+              : null
+          }
           <div>
             <Guests>GUESTS</Guests>
             <GuestCount>
               {
                 listingData.adults > 1 || listingData.children > 0 ?
-                `${listingData.adults + listingData.children} guests`
-                : '1 guest'
+                  `${listingData.adults + listingData.children} guests`
+                  : '1 guest'
               }
               {
                 listingData.infants === 1 ?
-                `, ${listingData.infants} infant`
-                : null
+                  `, ${listingData.infants} infant`
+                  : null
               }
               {
                 listingData.infants > 1 ?
-                `, ${listingData.infants} infants`
-                : null
+                  `, ${listingData.infants} infants`
+                  : null
               }
             </GuestCount>
             <GuestArrow onClick={() => openGuests()}>{listingData.guestOpen ? '^' : 'v'}</GuestArrow>
@@ -119,7 +127,8 @@ const Rating = styled.div`
 const CalPick = styled.div`
   display: flex;
   width: 100%;
-  border-radius: 12px
+  border-radius: 12px;
+  z-index: 20;
 `
 
 const DatePick = styled.div`
@@ -193,6 +202,17 @@ const GuestArrow = styled.div`
   vertical-align: text-bottom;
   padding-top: 5px;
   border-radius: 20px;
+`
+
+const CalendarWrapper = styled.div`
+  height: fit-content;
+  width: fit-content;
+  background: #FFFFFF;
+  border: 1px solid black;
+  position: absolute;
+  z-index: 10;
+  transform: translate(-380px, -66px);
+  padding: 10px;
 `
 
 export default Widget
