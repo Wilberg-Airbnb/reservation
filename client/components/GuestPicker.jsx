@@ -38,8 +38,10 @@ const GuestSelectRight = styled.div`
 `
 
 const GuestFont = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 0px;
+  position: absolute;
+  transform: translate(6px, -0.75px);
 `
 const GuestSpanLeft = styled.span`
   width: 75px;
