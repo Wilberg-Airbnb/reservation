@@ -33,13 +33,18 @@ class App extends React.Component {
       checkOut: '',
       currentPrice: null,
       invoice: false,
-      calendarPage: 0
+      calendarPage: 0,
+      guestOpen: false,
+      adults: 0,
+      children: 0,
+      infants: 0
     }
 
     this.selectDate = this.selectDate.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.clearDates = this.clearDates.bind(this);
+    this.openGuests = this.openGuests.bind(this);
   }
 
   //get data method for retrieving the listing data
@@ -224,6 +229,10 @@ class App extends React.Component {
     })
   }
 
+  openGuests() {
+    this.setState({guestOpen: !this.state.guestOpen})
+  }
+
   componentDidMount() {
     //makes call to get data for listing
     this.generateDates();
@@ -235,7 +244,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Widget listingData={this.state} />
+        <Widget listingData={this.state} openGuests={this.openGuests}/>
         <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );

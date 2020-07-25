@@ -23,6 +23,7 @@ const GuestSelectLeft = styled.div`
   text-align: center;
   margin-top: 0px;
   float: left;
+  cursor: pointer;
 `
 
 const GuestSelectRight = styled.div`
@@ -33,22 +34,12 @@ const GuestSelectRight = styled.div`
   text-align: center;
   margin-top: 0px;
   float: right;
+  cursor: pointer;
 `
 
 const GuestFont = styled.p`
   font-size: 14px;
   margin-top: 0px;
-`
-
-const GuestCategory = styled.p`
-  font-size: 24px;
-`
-const GuestRow = styled.div`
-  width: 100%;
-  height: 32px;
-`
-const GuestNum = styled.div`
-  
 `
 const GuestSpanLeft = styled.span`
   width: 75px;
@@ -68,7 +59,14 @@ const GuestSpanRight = styled.span`
   vertical-align: text-bottom;
 `
 
-const GuestPicker = (props) => {
+const GuestClose = styled.p`
+  float: right;
+  text-decoration: underline;
+  margin-top: 70px;
+  cursor: pointer;
+`
+
+const GuestPicker = ({ openGuests }) => {
   return (
     <GuestContainer>
       <GuestSpanLeft>
@@ -95,6 +93,7 @@ const GuestPicker = (props) => {
         1
         <GuestSelectRight><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
+      <GuestClose onClick={() => openGuests()}>Close</GuestClose>
     </GuestContainer>
   )
 }

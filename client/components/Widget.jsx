@@ -7,7 +7,7 @@ const formatCalInput = (bookDate) => {
   return new Date(bookDate).toISOString().slice(0, 10);
 }
 
-const Widget = ({ listingData }) => {
+const Widget = ({ listingData, openGuests }) => {
   return (
     <Container>
       <Content>
@@ -29,9 +29,10 @@ const Widget = ({ listingData }) => {
           <div>
             <Guests>GUESTS</Guests>
             <GuestCount>3 guests, 2 infants</GuestCount>
+            <GuestArrow onClick={() => openGuests()}>{listingData.guestOpen ? '^' : 'v'}</GuestArrow>
           </div>
         </BookPick>
-        <GuestPicker />
+        {listingData.guestOpen ? <GuestPicker openGuests={openGuests}/> : null}
         <CheckButton id="check-available" onClick={(e) => this.handleClick(e)}>{!listingData.invoice ? 'Check availability' : 'Reserve'}</CheckButton>
         {!listingData.invoice ?
           null
@@ -164,6 +165,18 @@ const GuestCount = styled.p`
   font-size: 16px;
   font-weight: 100;
   margin: 0px 1px;
+`
+
+const GuestArrow = styled.div`
+  width: 30px;
+  height: 25px;
+  float: right;
+  border: 1px solid black;
+  transform: translate(-10px, -40px);
+  text-align: center;
+  vertical-align: text-bottom;
+  padding-top: 5px;
+  border-radius: 20px;
 `
 
 export default Widget
