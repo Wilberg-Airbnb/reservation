@@ -32,6 +32,7 @@ const Roll = styled.div`
 `
 
 const HeadTitle = styled.h2`
+  font-size: 22px !important;
   margin: 1px 0px;
   vertical-align: top;
   font-weight: 400;
@@ -39,6 +40,7 @@ const HeadTitle = styled.h2`
 
 const HeadSubtitle = styled.p`
   margin-top: 0px;
+  font-size: 16px !important;
 `
 
 const ScrollLeft = styled.div`
