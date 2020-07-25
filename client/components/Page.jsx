@@ -102,7 +102,6 @@ const Page = ({ monthDays, monthName, monthData, selectDate }) => {
         {createPad(startDay).forEach(pad => paddedMonthDays.unshift('  '))}
 
         {paddedMonthDays.map((x, index) => {
-
           let available = monthData.map(d => d.date.slice(8, 10))
           let dateId = x.slice(4) + ' ' + monthName
           if (available.indexOf(x.split(' ')[1]) !== -1) {
@@ -110,7 +109,6 @@ const Page = ({ monthDays, monthName, monthData, selectDate }) => {
           } else {
             return <Day isAvailable={false} key={index} id={dateId}>{x.split(' ')[1]}</Day>
           }
-
         })}
       </DayPicker>
     </Month>
