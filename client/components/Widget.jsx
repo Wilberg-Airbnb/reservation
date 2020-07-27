@@ -28,7 +28,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
             </DatePick>
           </CalPick>
           {
-            listingData.calendarPopup && listingData.bookStage !== 'invoice' ?
+            listingData.calendarPopup ?
               <CalendarWrapper>
                 <Calendar listingData={listingData} selectDate={selectDate} page={page} nextPage={nextPage} prevPage={prevPage} clearDates={clearDates} />
               </CalendarWrapper>
