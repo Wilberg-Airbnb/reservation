@@ -121,7 +121,7 @@ const WidgetHead = styled.div`
 `
 
 const ReservationPrice = styled.p`
-  font-size: 18px;
+  font-size: 16px;
 `
 
 const Rating = styled.span` 
