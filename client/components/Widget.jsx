@@ -14,7 +14,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
       <Content>
         <WidgetHead id="widget-heading">
           <ReservationPrice id="night-price">${listingData.currentPrice} / night</ReservationPrice>
-          <Rating id="avg-rating"><ReservationStar/> <AvgRateTxt>4.90 (323)</AvgRateTxt></Rating>
+          <Rating id="avg-rating"><ReservationStar /> <AvgRateTxt>{listingData.avgRate}</AvgRateTxt></Rating>
         </WidgetHead>
         <BookPick id="calendar-picker">
           <CalPick onClick={() => openCalendar()}>
@@ -127,10 +127,10 @@ const ReservationPrice = styled.p`
 const Rating = styled.span` 
   float: right;
   display: flex;
-  width: 100px;
+  width: 50px;
   height 25px;
   align-items: baseline;
-  margin-left: 103px;
+  margin-left: 150px;
   margin-top: 20px;
 `
 
