@@ -38,7 +38,8 @@ class App extends React.Component {
       adults: 1,
       children: 0,
       infants: 0,
-      calendarPopup: false
+      calendarPopup: false,
+      avgRate: null
     }
 
     this.selectDate = this.selectDate.bind(this);
@@ -57,7 +58,6 @@ class App extends React.Component {
     //EC2 instance api call
     axios.get(`http://3.19.16.18/api/reservation/${listingId}`)
       .then(res => {
-        console.log('AXIOS SUCCESS:', res)
         //data for listing set when component mounts
         let sortedDates = _.sortBy(res.data.availableDates, ["date"]);
         sortedDates = sortedDates.map(x => {
@@ -83,7 +83,9 @@ class App extends React.Component {
     var listingId = this.state.listingId
     axios.get(`http://52.14.214.44:8080/api/reviews/${listingId}?type=review`)
       .then(res => {
-        console.log(res);
+        this.setState({
+          avgRate: res.data
+        })
       })
       .catch(err => {
         console.error(err);
