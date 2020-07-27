@@ -54,7 +54,7 @@ class App extends React.Component {
   getData() {
 
     var listingId = this.state.listingId
-    //local machine api call
+    //EC2 instance api call
     axios.get(`http://3.19.16.18/api/reservation/${listingId}`)
       .then(res => {
         console.log('AXIOS SUCCESS:', res)
@@ -75,6 +75,18 @@ class App extends React.Component {
       })
       .catch(err => {
         console.log("GET for data failed: ", err);
+      })
+  }
+
+  //get average rating from Reviews service
+  getRated() {
+    var listingId = this.state.listingId
+    axios.get(`http://52.14.214.44:8080/api/reviews/${listingId}?type=review`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error(err);
       })
   }
 
@@ -260,6 +272,7 @@ class App extends React.Component {
     //makes call to get data for listing
     this.generateDates();
     this.getData();
+    this.getRated();
   }
 
   //Widget will display Calendar as modal while Calendar will also be listed further down the page
