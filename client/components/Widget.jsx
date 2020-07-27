@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GuestPicker from './GuestPicker.jsx';
 import Calendar from './Calendar.jsx';
+import arrow from '../assets/icons8-expand-arrow-50.png'
 
 const formatCalInput = (bookDate) => {
   if (bookDate === "") { return "" }
@@ -53,7 +54,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
                   : null
               }
             </GuestCount>
-            <GuestArrow onClick={() => openGuests()}>{listingData.guestOpen ? '^' : 'v'}</GuestArrow>
+            <GuestArrow onClick={() => openGuests()}/>
           </div>
         </BookPick>
         {listingData.guestOpen ? <GuestPicker listingData={listingData} openGuests={openGuests} handleGuests={handleGuests} /> : null}
@@ -212,6 +213,7 @@ const GuestArrow = styled.div`
   vertical-align: text-bottom;
   padding-top: 5px;
   border-radius: 20px;
+  background-image: url(${arrow});
 `
 
 const CalendarWrapper = styled.div`
