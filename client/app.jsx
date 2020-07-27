@@ -193,7 +193,8 @@ class App extends React.Component {
         checkOut: e.target.id,
         currentPrice: this.state.availableDates[0].fee,
         bookStage: 'invoice',
-        invoice: true
+        invoice: true,
+        calendarPopup: false
       })
     }
   }
