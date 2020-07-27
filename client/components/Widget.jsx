@@ -13,8 +13,8 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
     <Container>
       <Content>
         <WidgetHead id="widget-heading">
-          <p id="night-price">${listingData.currentPrice} / night</p>
-          <Rating id="avg-rating">⭐️ 4.90 (323)</Rating>
+          <ReservationPrice id="night-price">${listingData.currentPrice} / night</ReservationPrice>
+          <Rating id="avg-rating"><ReservationStar/> <AvgRateTxt>4.90 (323)</AvgRateTxt></Rating>
         </WidgetHead>
         <BookPick id="calendar-picker">
           <CalPick onClick={() => openCalendar()}>
@@ -117,11 +117,21 @@ const ButtonPick = styled.div`
 
 const WidgetHead = styled.div`
   display: flex;
+  margin-left: 20px;
 `
 
-const Rating = styled.div` 
-  margin-left: 200px;
+const ReservationPrice = styled.p`
+  font-size: 18px;
+`
+
+const Rating = styled.span` 
   float: right;
+  display: flex;
+  width: 100px;
+  height 25px;
+  align-items: baseline;
+  margin-left: 103px;
+  margin-top: 20px;
 `
 
 const CalPick = styled.div`
@@ -215,6 +225,42 @@ const CalendarWrapper = styled.div`
   z-index: 10;
   transform: translate(-380px, -66px);
   padding: 10px;
+`
+
+const ReservationStar = styled.div`
+  background: #ff385c;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-right: 4px;
+`;
+
+const AvgRateTxt = styled.div`
+  font-size: 14px;
 `
 
 export default Widget
