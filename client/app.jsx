@@ -229,7 +229,8 @@ class App extends React.Component {
       bookStage: 'check-in',
       checkIn: '',
       checkOut: '',
-      invoice: false
+      invoice: false,
+      calendarPopup: false
     })
   }
 

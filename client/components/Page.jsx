@@ -72,6 +72,7 @@ const Day = styled.div`
 
   &.selected {
     background: #F7F7F7;
+    pointer-events: none;
   }
 `
 
