@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import Widget from './components/Widget.jsx'
 import axios from 'axios';
 import lodash from 'lodash';
-import Calendar from './components/Calendar.jsx'
+import Calendar from './components/Calendar.jsx';
+import CalendarPortal from './components/CalendarPortal.jsx';
 
 const dateString = (info) => {
   info = info.split('T')[0]
@@ -283,7 +284,7 @@ class App extends React.Component {
     return (
       <div>
         <Widget listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} openCalendar={this.openCalendar}/>
-        <Calendar listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
+        <CalendarPortal listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );
   }

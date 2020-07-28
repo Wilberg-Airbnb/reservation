@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GuestPicker from './GuestPicker.jsx';
 import Calendar from './Calendar.jsx';
-// import arrow from '../assets/icons8-expand-arrow-50.png';
-// import arrowUp from '../assets/icons8-expand-arrowUp-50.png';
+import ReactDOM from 'react-dom';
 
 const formatCalInput = (bookDate) => {
   if (bookDate === "") { return "" }
@@ -11,7 +10,7 @@ const formatCalInput = (bookDate) => {
 }
 
 const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextPage, prevPage, clearDates, openCalendar }) => {
-  return (
+  return ReactDOM.createPortal(
     <Container>
       <Content>
         <WidgetHead id="widget-heading">
@@ -80,7 +79,8 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
           </div>
         }
       </Content>
-    </Container>
+    </Container>,
+    document.getElementById('reservation-widget')
   )
 }
 
@@ -89,7 +89,6 @@ const Container = styled.div`
   font-weight: 400;
   font-size: 22px;
   line-height:26px;
-  float: right;
   width: 338px;
   border: 2px solid rgb(221, 221, 221);
   padding: 24px;
