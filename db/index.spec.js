@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 var promiseQuery = Promise.promisify(db.query).bind(db);
 
 describe('reservation table', () => {
-  it('should contain 100 listings', async (done) => {
+  xit('should contain 100 listings', async (done) => {
     let query = `SELECT * FROM reservation`
 
     db.query(query, (err, results) => {
@@ -26,7 +26,7 @@ describe('reservation table', () => {
     })
   })
 
-  it('should have more than 150 dates per listing', async (done) => {
+  xit('should have more than 150 dates per listing', async (done) => {
 
     let allPromised = []
 
