@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import Calendar from './Calendar.jsx';
+
+const Calendar = lazy(() => import('./Calendar.jsx'));
+const renderLoader = () => <p>Loading...</p>
 
 function CalendarPortal({ listingData, selectDate, page, nextPage, prevPage, clearDates, openCalendar }) {
   return ReactDOM.createPortal(
-    <div>
+    <Suspense fallback={renderLoader()}>
       <Calendar listingData={listingData} selectDate={selectDate} page={page} nextPage={nextPage} prevPage={prevPage} clearDates={clearDates} />
-    </div>,
+    </Suspense>,
     document.getElementById('reservation-calendar')
   )
 }
