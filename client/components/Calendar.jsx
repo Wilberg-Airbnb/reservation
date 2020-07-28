@@ -126,7 +126,7 @@ const Calendar = ({ listingData, selectDate, page, nextPage, prevPage, clearDate
           })}
         </Roll>
       </Window>
-      <ClearDates onClick={() => clearDates()}>Clear Dates</ClearDates>
+      <ClearDates id="clearDates" onClick={() => clearDates()}>Clear Dates</ClearDates>
     </Section>
   )
 }
