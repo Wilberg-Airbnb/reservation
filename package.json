@@ -41,6 +41,8 @@
   "scripts": {
     "test": "jest -c jest.config.js --coverage",
     "test:watch": "jest -c jest.config.js --coverage --watch --silent --runInBand --detectOpenHandles",
+    "test:collect": "jest --collect-coverage",
+    "test:update": "jest --update-snapshot",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
     "server:dev": "nodemon server/server.js",

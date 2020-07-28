@@ -75,7 +75,7 @@ class App extends React.Component {
         })
       })
       .catch(err => {
-        console.log("GET for data failed: ", err);
+        console.error(err);
       })
   }
 
@@ -136,7 +136,6 @@ class App extends React.Component {
         let filtered = this.state.availableDates.filter(y => {
           return y.date === dateString(selectedDay + ' ' + monthYear)
         })
-        console.log(stay)
         if (allAvailable.indexOf(dateString(selectedDay + ' ' + monthYear)) !== -1) {
           // console.log(allAvailable)
           stay.push(filtered[0])
