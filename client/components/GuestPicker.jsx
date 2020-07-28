@@ -75,17 +75,17 @@ const GuestPicker = ({ openGuests, handleGuests, listingData }) => {
         Adults
       </GuestSpanLeft>
       <GuestSpanRight>
-        <GuestSelectLeft onClick={(e) => handleGuests('adults', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
+        <GuestSelectLeft id="sub-adult" onClick={(e) => handleGuests('adults', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
         {listingData.adults}
-        <GuestSelectRight onClick={(e) => handleGuests('adults', true)}><GuestFont>+</GuestFont></GuestSelectRight>
+        <GuestSelectRight id="add-adult" onClick={(e) => handleGuests('adults', true)}><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
       <GuestSpanLeft>
         Children
       </GuestSpanLeft>
       <GuestSpanRight>
-        <GuestSelectLeft onClick={(e) => handleGuests('children', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
+        <GuestSelectLeft id="add-child" onClick={(e) => handleGuests('children', false)}><GuestFont>-</GuestFont></GuestSelectLeft>
         {listingData.children}
-        <GuestSelectRight onClick={(e) => handleGuests('children', true)}><GuestFont>+</GuestFont></GuestSelectRight>
+        <GuestSelectRight id="sub-child" onClick={(e) => handleGuests('children', true)}><GuestFont>+</GuestFont></GuestSelectRight>
       </GuestSpanRight>
       <GuestSpanLeft>
         Infants
