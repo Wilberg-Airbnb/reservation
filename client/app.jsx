@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Widget from './components/Widget.jsx'
+import WidgetPortal from './components/WidgetPortal.jsx'
 import axios from 'axios';
 import lodash from 'lodash';
 import Calendar from './components/Calendar.jsx';
@@ -283,7 +283,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Widget listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} openCalendar={this.openCalendar}/>
+        <WidgetPortal listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} openCalendar={this.openCalendar}/>
         <CalendarPortal listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
     );
