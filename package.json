@@ -46,7 +46,7 @@
     "test:update": "jest --update-snapshot",
     "seed": "node db/seed.js",
     "react:dev": "webpack -d --watch",
-    "react:pro": "webpack -p --watch",
+    "react:pro": "webpack -p",
     "server:dev": "nodemon server/server.js",
     "start": "node server/server.js",
     "containers": "concurrently \"npm run seed\" \"npm run start\""
