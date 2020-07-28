@@ -10,7 +10,7 @@ const formatCalInput = (bookDate) => {
 }
 
 const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextPage, prevPage, clearDates, openCalendar }) => {
-  return ReactDOM.createPortal(
+  return (
     <Container>
       <Content>
         <WidgetHead id="widget-heading">
@@ -18,7 +18,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
           <Rating id="avg-rating"><ReservationStar /> <AvgRateTxt>{listingData.avgRate}</AvgRateTxt></Rating>
         </WidgetHead>
         <BookPick id="calendar-picker">
-          <CalPick onClick={() => openCalendar()}>
+          <CalPick id="calPick" onClick={() => openCalendar()}>
             <DatePick>
               <CheckTitle>Check-In</CheckTitle>
               {formatCalInput(listingData.checkIn)}
@@ -79,8 +79,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
           </div>
         }
       </Content>
-    </Container>,
-    document.getElementById('reservation-widget')
+    </Container>
   )
 }
 

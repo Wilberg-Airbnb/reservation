@@ -40,13 +40,12 @@ describe('<Widget/>', () => {
         expect(wrapper.text()).toContain('$48 / night') 
     })
 
-    it('should call handleClick when Check avialability is clicked', () => {
-        const spy = jest.spyOn(Widget.prototype, 'handleClick');
-        const wrapper = mount(<Widget listingData={state}/>);
-        wrapper.find('button').simulate('click');
-        const instance = wrapper.instance();
+    it('should call openCalendar when CalPick is clicked', () => {
+        const mockCallBack = jest.fn();
+        // const spy = jest.spyOn(Widget.prototype, 'openCalendar');
+        const wrapper = shallow(<Widget openCalendar={mockCallBack} listingData={{currentPrice: 54, checkIn: '', checkOut: ''}}/>);
+        wrapper.find('#calPick').simulate('click');
 
-        expect(wrapper.instance().handleClick).toBeTruthy();
-        expect(spy).toHaveBeenCalled();
+        expect(mockCallBack).toHaveBeenCalled();
     })
 })
