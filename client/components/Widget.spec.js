@@ -17,33 +17,34 @@ describe('<Widget/>', () => {
         const url = "http://localhost:8888/54";
         Object.defineProperty(window, 'location', {
             value: {
-                href: url
+                href: url,
+                pathname: '/54/'
             }
         })
 
-        listing = JSON.parse(window.location.href.split('/')[3]);
-        state = { listingId: listing }
+        listing = JSON.parse(window.location.pathname.slice(1, -1));
+        state = { listingId: listing, currentPrice: 74, checkIn: '', checkOut: '', standardPrice: 48, avgRate: 2.8}
     })
 
-    it('should load with the proper listingId', () => {
+    it('should load with average rating', () => {
 
-        const wrapper = mount(<Widget listingData={state} />)
+        const wrapper = shallow(<Widget listingData={state} />)
 
 
-        expect(wrapper.state().listingId).toEqual(54);
+        expect(wrapper.text()).toContain('2.8') 
     })
 
     it('should display standard price for a night', () => {
-        state.standardPrice = 48;
         const wrapper = shallow(<Widget listingData={state}/>);
 
-        expect(wrapper.text()).toContain('$48 / night') 
+        expect(wrapper.text()).toContain('$74 / night') 
     })
 
     it('should call openCalendar when CalPick is clicked', () => {
         const mockCallBack = jest.fn();
+        let state = state = { listingId: listing, currentPrice: 74, checkIn: '', checkOut: '', standardPrice: 48};
         // const spy = jest.spyOn(Widget.prototype, 'openCalendar');
-        const wrapper = shallow(<Widget openCalendar={mockCallBack} listingData={{currentPrice: 54, checkIn: '', checkOut: ''}}/>);
+        const wrapper = shallow(<Widget openCalendar={mockCallBack} listingData={state}/>);
         wrapper.find('#calPick').simulate('click');
 
         expect(mockCallBack).toHaveBeenCalled();
