@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const db = require('../db/index.js');
-const path = require('path');
 const Promise = require('bluebird');
-const { readdirSync } = require('fs');
+const compression = require('compression');
 
 const promiseQuery = Promise.promisify(db.query).bind(db);
 //middleware for sending 404 for invalid listingIds
@@ -23,6 +22,9 @@ app.use(function(req, res, next) {
 //serve static files at listing sub collection
 app.use('/:listingId/', express.static(__dirname + '../../public'));
 app.use(express.json());
+app.use(compression({
+  level: 2
+}));
 
 //GET API route for listing data (called once componentDidMount & getData is called)
 app.get('/api/reservation/:listingId', (req, res) => {

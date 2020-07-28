@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import WidgetPortal from './components/WidgetPortal.jsx'
 import axios from 'axios';
-import lodash from 'lodash';
-import Calendar from './components/Calendar.jsx';
+import _ from 'lodash';
 import CalendarPortal from './components/CalendarPortal.jsx';
 
 const dateString = (info) => {
