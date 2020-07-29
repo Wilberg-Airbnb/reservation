@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import GuestPicker from './GuestPicker.jsx';
 import Calendar from './Calendar.jsx';
-import ReactDOM from 'react-dom';
 
 const formatCalInput = (bookDate) => {
   if (bookDate === "") { return "" }
@@ -84,6 +83,7 @@ const Widget = ({ listingData, openGuests, handleGuests, selectDate, page, nextP
 }
 
 const Container = styled.div`
+#reservation-widget & {
   font-family: Poppins;
   font-weight: 400;
   font-size: 22px;
@@ -93,38 +93,50 @@ const Container = styled.div`
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   border-radius: 12px;
+}
 `;
 
 const Content = styled.div`
+#reservation-widget & {
   display: block;
   align: center;
   margin: auto;
+}
 `
 
 const BookPick = styled.div`
+#reservation-widget & {
   width: 288px;
   height: 112px;
   border: 2px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 5px;
   margin: auto;
+}
 `
 const ButtonPick = styled.div`
+#reservation-widget & {
   width: 288;
   margin: auto;
   overflow: hidden;
+}
 `
 
 const WidgetHead = styled.div`
+#reservation-widget & {
   display: flex;
   margin-left: 20px;
+}
 `
 
 const ReservationPrice = styled.p`
+#reservation-widget & {
   font-size: 16px;
+}
 `
 
 const Rating = styled.span` 
+#reservation-widget & {
   float: right;
   display: flex;
   width: 50px;
@@ -132,16 +144,20 @@ const Rating = styled.span`
   align-items: baseline;
   margin-left: 150px;
   margin-top: 20px;
+}
 `
 
 const CalPick = styled.div`
+#reservation-widget & {
   display: flex;
   width: 100%;
   border-radius: 12px;
   z-index: 20;
+}
 `
 
 const DatePick = styled.div`
+#reservation-widget & {
   width: 160px;
   height: 56px;
   overflow: hidden;
@@ -150,15 +166,19 @@ const DatePick = styled.div`
   vertical-align: text-top;
   font-size: 14px;
   border-bottom: 2px solid rgb(221, 221, 221);
+}
 `
 
 const CheckTitle = styled.h6`
+#reservation-widget & {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 14px;
+}
 `
 
 const CheckButton = styled.button`
+#reservation-widget & {
 display: block;
 margin: auto;
 margin-top: 20px;
@@ -168,41 +188,53 @@ background: radial-gradient(#F83158, #D80866);
 color: rgb(255, 255, 255);
 border: 2px solid rgba(221, 221, 221, 0.12);
 border-radius: 12px;
+}
 `
 
 const ChargedText = styled.p`
+#reservation-widget & {
   font-size: 12px;
   text-align: center;
+}
 `
 
 const SpanLeft = styled.span`
+#reservation-widget & {
   text-align: left;
   font-size: 16px;
   padding-left: 20px;
+}
 `
 
 const SpanRight = styled.span`
+#reservation-widget & {
   text-align: right;
   font-size: 16px;
   padding-right: 20px;
   float: right;
+}
 `
 
 const Guests = styled.h4`
+#reservation-widget & {
   margin: 0px 1px;
   padding-bottom: 2px;
   font-size: 14px;
   font-weight: 100px;
   vertical-align: text-top;
+}
 `
 
 const GuestCount = styled.p`
+#reservation-widget & {
   font-size: 16px;
   font-weight: 100;
   margin: 0px 1px;
+}
 `
 
 const GuestArrow = styled.div`
+#reservation-widget & {
   width: 30px;
   height: 25px;
   float: right;
@@ -235,9 +267,11 @@ const GuestArrow = styled.div`
     background-size: 20px 20px;
     background-position: center;
   `}
+}
 `
 
 const CalendarWrapper = styled.div`
+#reservation-widget & {
   height: fit-content;
   width: fit-content;
   background: #FFFFFF;
@@ -248,9 +282,11 @@ const CalendarWrapper = styled.div`
   z-index: 10;
   transform: translate(-380px, -66px);
   padding: 10px;
+}
 `
 
 const ReservationStar = styled.div`
+#reservation-widget & {
   background: #ff385c;
   -webkit-clip-path: polygon(
     50% 0%,
@@ -280,10 +316,13 @@ const ReservationStar = styled.div`
   height: 15px;
   width: 15px;
   margin-right: 4px;
+  }
 `;
 
 const AvgRateTxt = styled.div`
+#reservation-widget & {
   font-size: 14px;
+}
 `
 
 export default Widget
