@@ -12,29 +12,38 @@ const createPad = (day) => {
 //Page Element Styles
 
 const Month = styled.div`
+#reservation-calendar & {
   height: 370px;
   width: 323px;
   display: inline-block;
   vertical-align: top;
+}
 `
 
 const MonthHeader = styled.section`
+#reservation-calendar & {
   height: 91px;
   width: 100%;
   text-align: center;
+}
 `
 
 const MonthName = styled.h6`
+#reservation-calendar & {
   font-size: 16px !important;
   font-weight: 300 !important;
+}
 `
 
 const Week = styled.div`
+#reservation-calendar & {
   height: 32px;
   width: 100%;
+}
 `
 
 const DayWeek = styled.div`
+#reservation-calendar & {
   height: 25px;
   width: 43.5px;
   display: inline-block;
@@ -45,12 +54,16 @@ const DayWeek = styled.div`
   font-weight: 200;
   color: grey;
   font-size: 14px !important;
+}
 `
 const Paragraph = styled.p`
+#reservation-calendar & {
   font-size: 14px !important;
+}
 `
 
 const Day = styled.div`
+#reservation-calendar & {
   height: 25px;
   width: 43.5px;
   display: inline-block;
@@ -74,12 +87,15 @@ const Day = styled.div`
     background: #F7F7F7;
     pointer-events: none;
   }
+}
 `
 
 const DayPicker = styled.section`
+#reservation-calendar & {
   width: 100%;
   text-align: left;
   padding-top: 10px;
+}
 `
 
 const Page = ({ monthDays, monthName, monthData, selectDate }) => {

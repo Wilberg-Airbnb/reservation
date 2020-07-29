@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const GuestContainer = styled.div`
+#reservation-widget & {
   width: 280px;
   height: 320px;
   border: 1px solid rgb(221, 221, 221);
@@ -13,9 +14,11 @@ const GuestContainer = styled.div`
   background: #FFFFFF;
   padding: 16px;
   display: inline-block;
+}
 `
 
 const GuestSelectLeft = styled.div`
+#reservation-widget & {
   width: 20px;
   height: 20px;
   border: 1px solid #717171;
@@ -24,9 +27,11 @@ const GuestSelectLeft = styled.div`
   margin-top: 0px;
   float: left;
   cursor: pointer;
+}
 `
 
 const GuestSelectRight = styled.div`
+#reservation-widget & {
   width: 20px;
   height: 20px;
   border: 1px solid #717171;
@@ -35,23 +40,29 @@ const GuestSelectRight = styled.div`
   margin-top: 0px;
   float: right;
   cursor: pointer;
+}
 `
 
 const GuestFont = styled.p`
+#reservation-widget & {
   font-size: 12px;
   margin-top: 0px;
   position: absolute;
   transform: translate(6px, -0.75px);
+}
 `
 const GuestSpanLeft = styled.span`
+#reservation-widget & {
   width: 75px;
   height: 32px;
   border: 1px none black;
   float: left;
   margin-top: 40px;
+}
 `
 
 const GuestSpanRight = styled.span`
+#reservation-widget & {
   width 150px;
   height: 32px;
   border: 1px none black;
@@ -59,13 +70,16 @@ const GuestSpanRight = styled.span`
   text-align: center;
   margin-top: 40px;
   vertical-align: text-bottom;
+}
 `
 
 const GuestClose = styled.p`
+#reservation-widget & {
   float: right;
   text-decoration: underline;
   margin-top: 70px;
   cursor: pointer;
+}
 `
 
 const GuestPicker = ({ openGuests, handleGuests, listingData }) => {
