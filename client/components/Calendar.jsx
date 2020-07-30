@@ -8,6 +8,12 @@ const Section = styled.section`
   width: 653.33px;
   font-family: Poppins;
 }
+
+#reservation-widget & {
+  height: 454.53px;
+  width: 653.33px;
+  font-family: Poppins;
+}
 `
 
 const Head = styled.div`
@@ -16,10 +22,23 @@ const Head = styled.div`
   width: 653.33px;
   padding: 5px;
 }
+
+#reservation-widget & {
+  height: 65.73px;
+  width: 653.33px;
+  padding: 5px;
+}
 `
 
 const Window = styled.div`
 #reservation-calendar & {
+  height: 370px;
+  width: 653.33px;
+  overflow: hidden;
+  position: relative;
+}
+
+#reservation-widget & {
   height: 370px;
   width: 653.33px;
   overflow: hidden;
@@ -37,10 +56,27 @@ const Roll = styled.div`
   z-index: 0 !important;
   transform: ${props => `translate(-${props.page}px, 0px)`};
 }
+
+#reservation-widget & {
+  height: 370px !important;
+  width: 5000px !important;
+  position: absolute !important;
+  display: block;
+  position: absolute;
+  z-index: 0 !important;
+  transform: ${props => `translate(-${props.page}px, 0px)`};
+}
 `
 
 const HeadTitle = styled.h2`
 #reservation-calendar & {
+  font-size: 22px !important;
+  margin: 1px 0px;
+  vertical-align: top;
+  font-weight: 400;
+}
+
+#reservation-widget & {
   font-size: 22px !important;
   margin: 1px 0px;
   vertical-align: top;
@@ -53,10 +89,35 @@ const HeadSubtitle = styled.p`
   margin-top: 0px;
   font-size: 16px !important;
 }
+
+#reservation-widget & {
+  margin-top: 0px;
+  font-size: 16px !important;
+}
 `
 
 const ScrollLeft = styled.div`
 #reservation-calendar & {
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  float: left;
+  transform: translate(50px, 30px);
+  text-align: center;
+  border-radius: 50px;
+  position: absolute;
+  z-index: 1;
+  &:hover {
+    background: #F7F7F7;
+    cursor: pointer;
+  }
+  ${({ page }) => page <= 0 && `
+    pointer-events: none;
+    color: white;
+  `}
+}
+
+#reservation-widget & {
   width: 25px;
   height: 25px;
   font-size: 18px;
@@ -96,10 +157,39 @@ const ScrollRight = styled.div`
     color: white;
   `}
 }
+
+#reservation-widget & {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 50px;
+  font-size: 18px;
+  position: absolute;
+  transform: translate(575px, 30px);
+  z-index: 5;
+  &:hover {
+    background: #F7F7F7;
+    cursor: pointer;
+  }
+  ${({ page }) => page >= 3230 && `
+    pointer-events: none;
+    color: white;
+  `}
+}
 `;
 
 const ClearDates = styled.p`
 #reservation-calendar & {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  float: right;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#reservation-widget & {
   font-size: 14px;
   font-weight: 500;
   text-decoration: underline;
