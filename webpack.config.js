@@ -1,6 +1,7 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client');
 var DIST_DIR = path.join(__dirname, '/public');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: false,
@@ -30,4 +31,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      SC_ATTR: JSON.stringify(process.env.SC_ATTR),
+    })
+  ]
 };
