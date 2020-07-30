@@ -18,10 +18,23 @@ const Month = styled.div`
   display: inline-block;
   vertical-align: top;
 }
+
+#reservation-widget & {
+  height: 370px;
+  width: 323px;
+  display: inline-block;
+  vertical-align: top;
+}
 `
 
 const MonthHeader = styled.section`
 #reservation-calendar & {
+  height: 91px;
+  width: 100%;
+  text-align: center;
+}
+
+#reservation-widget & {
   height: 91px;
   width: 100%;
   text-align: center;
@@ -33,10 +46,20 @@ const MonthName = styled.h6`
   font-size: 16px !important;
   font-weight: 300 !important;
 }
+
+#reservation-widget & {
+  font-size: 16px !important;
+  font-weight: 300 !important;
+}
 `
 
 const Week = styled.div`
 #reservation-calendar & {
+  height: 32px;
+  width: 100%;
+}
+
+#reservation-widget & {
   height: 32px;
   width: 100%;
 }
@@ -55,9 +78,26 @@ const DayWeek = styled.div`
   color: grey;
   font-size: 14px !important;
 }
+
+#reservation-widget & {
+  height: 25px;
+  width: 43.5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  border-radius: 100px;
+  padding-top: 5px;
+  font-weight: 200;
+  color: grey;
+  font-size: 14px !important;
+}
 `
 const Paragraph = styled.p`
 #reservation-calendar & {
+  font-size: 14px !important;
+}
+
+#reservation-widget & {
   font-size: 14px !important;
 }
 `
@@ -88,10 +128,42 @@ const Day = styled.div`
     pointer-events: none;
   }
 }
+
+#reservation-widget & {
+  height: 25px;
+  width: 43.5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  padding-top: 5px;
+  text-decoration: line-through;
+  color: grey;
+  font-size: 16px;
+
+  ${({ isAvailable }) => isAvailable && `
+    text-decoration: none;
+    color: black;
+    &:hover {
+      background: #F7F7F7;
+      cursor: pointer;
+    }
+  `}
+
+  &.selected {
+    background: #F7F7F7;
+    pointer-events: none;
+  }
+}
 `
 
 const DayPicker = styled.section`
 #reservation-calendar & {
+  width: 100%;
+  text-align: left;
+  padding-top: 10px;
+}
+
+#reservation-widget & {
   width: 100%;
   text-align: left;
   padding-top: 10px;
