@@ -3,6 +3,7 @@ import WidgetPortal from './components/WidgetPortal.jsx'
 import axios from 'axios';
 import _ from 'lodash';
 import CalendarPortal from './components/CalendarPortal.jsx';
+import MiniPortal from './components/MiniPortal.jsx'
 
 const dateString = (info) => {
   info = info.split('T')[0]
@@ -280,6 +281,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <MiniPortal listingData={this.state}/>
         <WidgetPortal listingData={this.state} openGuests={this.openGuests} handleGuests={this.handleGuests} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} openCalendar={this.openCalendar}/>
         <CalendarPortal listingData={this.state} selectDate={this.selectDate} page={this.state.calendarPage} nextPage={this.nextPage} prevPage={this.prevPage} clearDates={this.clearDates} />
       </div>
