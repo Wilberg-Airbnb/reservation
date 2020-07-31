@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const GuestContainer = styled.div`
+const GuestContainer = styled.aside`
 #reservation-widget & {
   width: 280px;
   height: 320px;
@@ -17,7 +17,7 @@ const GuestContainer = styled.div`
 }
 `
 
-const GuestSelectLeft = styled.div`
+const GuestSelectLeft = styled.aside`
 #reservation-widget & {
   width: 20px;
   height: 20px;
@@ -30,7 +30,7 @@ const GuestSelectLeft = styled.div`
 }
 `
 
-const GuestSelectRight = styled.div`
+const GuestSelectRight = styled.aside`
 #reservation-widget & {
   width: 20px;
   height: 20px;
@@ -46,7 +46,8 @@ const GuestSelectRight = styled.div`
 const GuestFont = styled.p`
 #reservation-widget & {
   font-size: 12px;
-  margin-top: 0px;
+  margin: 0px 0px 12px 0px;
+  height: 25px;
   position: absolute;
   transform: translate(6px, -0.75px);
 }
@@ -77,7 +78,8 @@ const GuestClose = styled.p`
 #reservation-widget & {
   float: right;
   text-decoration: underline;
-  margin-top: 70px;
+  margin-top: 50px;
+  margin-bottom: 22px;
   cursor: pointer;
 }
 `
