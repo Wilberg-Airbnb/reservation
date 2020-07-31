@@ -96,7 +96,7 @@ const HeadSubtitle = styled.p`
 }
 `
 
-const ScrollLeft = styled.div`
+const ScrollLeft = styled.aside`
 #reservation-calendar & {
   width: 25px;
   height: 25px;
@@ -138,7 +138,7 @@ const ScrollLeft = styled.div`
 }
 `
 
-const ScrollRight = styled.div`
+const ScrollRight = styled.aside`
 #reservation-calendar & {
   width: 25px;
   height: 25px;
