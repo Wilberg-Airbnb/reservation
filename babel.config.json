@@ -8,10 +8,6 @@
         "test": {
             "plugins": [
                 "@babel/plugin-transform-runtime",
-                [
-                    "@quickbaseoss/babel-plugin-styled-components-css-namespace",
-                    {"cssNamespace": ".reservationSpecific .reservationMoreSpecific .reservationSuperSpecific"}
-                ],
                 "babel-plugin-styled-components"
             ]
         }
