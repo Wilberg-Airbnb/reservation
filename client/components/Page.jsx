@@ -45,11 +45,13 @@ const MonthName = styled.h6`
 #reservation-calendar & {
   font-size: 16px !important;
   font-weight: 300 !important;
+  margin: 36.28px;
 }
 
 #reservation-widget & {
   font-size: 16px !important;
   font-weight: 300 !important;
+  margin: 36.28px;
 }
 `
 
