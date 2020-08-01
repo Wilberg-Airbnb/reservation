@@ -3,7 +3,7 @@
 > Reservation is one of many microservices for our Airbnb clone "Airbrb".
 >
 >This service is composed of a multiple tools to allow the user to interact with the avaiable dates for a listing and obtain a complete itemized breakdown of >their expenses before ever hitting the cart.  There are three parts to the service and each can be animated and displayed for the user at different points of the > user's journy while they look into the listing's details.
-
+______
 
 ![](calendarDemo.gif)
 
@@ -92,8 +92,9 @@ npm run test:watch
 
 ## Deployment with docker
 
-- Reservation contains a Dockerfile & docker-compose.yml file for building docker images of both the application and database.  Simply run docker compose-up in the root directory to build these images to make Reservation deployment-ready.
+- Reservation contains a Dockerfile & docker-compose.yml file for building docker images of both the application and database.  Simply run docker compose-up in the root directory to build these images to make Reservation deployment-ready.  The command docker-compose down can be used to reset the images, but please make sure to prune the system of images and their volumes.
 
 ```sh
 docker-compose up
+docker-compose down
 ```
