@@ -320,7 +320,7 @@ And finally the biggest bug that I've come across was making the database availa
 volumes:
       - ./wait-for-it.sh:/usr/local/bin/wait-for-it.sh
       - ./:/Users/samjohnson/Documents/hrfiles/airbrb/reservation
-	HERE-^
+HERE------^
 ```
 
 A couple of commands helped me track how my database was connecting:
