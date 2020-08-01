@@ -1,8 +1,8 @@
 # Reservation
 
 > Reservation is one of many microservices for our Airbnb clone "Airbrb".
-
-`This service is composed of a multiple tools to allow the user to interact with the avaiable dates for a listing and obtain a complete itemized breakdown of their expenses before ever hitting the cart.  There are three parts to the service and each can be animated and displayed for the user at different points of the user's journy while they look into the listing's details.`
+>
+>This service is composed of a multiple tools to allow the user to interact with the avaiable dates for a listing and obtain a complete itemized breakdown of >their expenses before ever hitting the cart.  There are three parts to the service and each can be animated and displayed for the user at different points of the > user's journy while they look into the listing's details.
 
 
 ![](calendarDemo.gif)
