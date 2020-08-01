@@ -65,4 +65,11 @@ mysql -u root < server/schema.sql
 
 - Please run 'npm run server:dev' to serve application on localhost:5000.
 - bundle will serve on http://localhost:5000/public/bundle.js.
+- during development, use 'npm run react:dev' to transpile and watch any jsx development.
+- 'test' and 'test:watch' scripts are available for unit testing suites and testing coverage reports with Jest.
 - To retrieve reservation data for listing, use endpoint http://localhost:5000/api/reservation/:listingId.
+- The app also requires an Average Reviews endpoint that is already integrated.  All API calls are pointed to their currently deployed micro services on AWS EC2.
+
+## Deployment with docker
+
+- Reservation contains a Dockerfile & docker-compose.yml file for building docker images of both the application and database.  Simply run docker compose-up in the root directory to build these images to make Reservation deployment-ready.
