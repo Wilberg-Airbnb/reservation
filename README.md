@@ -4,17 +4,24 @@
 
 `This service is composed of a multiple tools to allow the user to interact with the avaiable dates for a listing and obtain a complete itemized breakdown of their expenses before ever hitting the cart.  There are three parts to the service and each can be animated and displayed for the user at different points of the user's journy while they look into the listing's details.`
 
+
 ![](calendarDemo.gif)
 
 > The calendar provides users the ability to check out available dates and make a selection for their stay
+------
+
 
 ![](widgetDemo.gif)
 
 > The widget is a compact and easily sticky animated tool that follows the user through the page.  It comes with a calendar for selection and a guest picker to choose how many will be attending the stay
+------
+
 
 ![](miniDemo.gif)
 
-> The mini keeps track off the currently selected stay's price per night, average reviews and provides a button to return to the widget for checkout.  
+> The mini keeps track off the currently selected stay's price per night, average reviews and provides a button to return to the widget for checkout.
+------
+
 
 ## Related Projects
 
