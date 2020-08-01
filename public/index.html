@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
     <style>
+        ::selection {
+            color: none;
+            background: none;
+        }
+
         #reservation-widget {
             float: right;
         }
@@ -14,6 +20,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="reservation-mini"></div>
     <div id="reservation-widget"></div>
@@ -21,4 +28,5 @@
     <div id="reservation"></div>
     <script src="bundle.js"></script>
 </body>
+
 </html>
